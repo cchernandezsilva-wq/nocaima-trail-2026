@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Inscripción | Maratón Nocaima Trail 2026</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23081c15'/><path d='M15 75 L45 25 L65 55 L75 40 L90 75 Z' fill='%23d4a373'/><path d='M35 75 L55 35 L75 75 Z' fill='%232d6a4f'/><circle cx='80' cy='25' r='8' fill='%23faedcd'/></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        nature: {
+                            500: '#2d6a4f',
+                            600: '#245842',
+                            700: '#1b4332',
+                            800: '#081c15',
+                            900: '#04100c',
+                            accent: '#d4a373',
+                            earth: '#faedcd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media (max-width: 640px) {
+            input, select, textarea { font-size: 16px !important; }
+        }
+        button, a, input {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shakeError 0.38s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-nature-900 text-gray-200 font-sans min-h-screen flex flex-col justify-between selection:bg-nature-accent selection:text-nature-900">
+
+    <!-- Header Simple -->
+    <header class="py-6 px-6 border-b border-nature-700/50 bg-nature-800/80 backdrop-blur-md">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 font-heading font-black text-xl text-white">
+                <span class="w-8 h-8 rounded-lg bg-nature-accent flex items-center justify-center text-nature-900">
+                    <i class="fas fa-mountain"></i>
+                </span>
+                <span>NOCAIMA<span class="text-nature-accent">TRAIL</span></span>
+            </a>
+            <a href="index.html" class="text-sm text-gray-300 hover:text-nature-accent flex items-center gap-1.5 transition-colors">
+                <i class="fas fa-arrow-left"></i> Inicio
+            </a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        
+        <div class="text-center mb-8">
+            <div class="w-14 h-14 bg-nature-700/60 rounded-2xl flex items-center justify-center text-nature-accent text-2xl mx-auto mb-3 border border-nature-500/30">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <h1 class="font-heading font-black text-3xl text-white">Consulta tu Inscripción</h1>
+            <p class="text-gray-400 text-sm mt-1 max-w-md mx-auto">
+                Ingresa tu número de documento de identidad para verificar el estado de tu pago, consultar tu número de dorsal oficial o descargar tu credencial digital.
+            </p>
+        </div>
+
+        <!-- Formulario de Consulta -->
+        <div class="bg-nature-800 border border-nature-700/80 p-5 sm:p-7 md:p-8 rounded-3xl shadow-2xl mb-8">
+            <form onsubmit="handleConsulta(event)" class="space-y-4">
+                <div>
+                    <label for="input-doc" class="block text-xs uppercase font-bold text-gray-300 mb-2">
+                        Número de Documento (Cédula o Tarjeta de Identidad):
+                    </label>
+                    <div class="flex flex-col sm:flex-row gap-2.5">
+                        <input type="text" id="input-doc" required placeholder="Ej: 1020304050"
+                            inputmode="numeric" pattern="[0-9]*" autocomplete="off"
+                            class="flex-1 bg-nature-900 border border-nature-700 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:border-nature-accent transition-all">
+                        <button type="submit" id="btn-buscar"
+                            class="w-full sm:w-auto bg-nature-accent hover:bg-white text-nature-900 font-black px-7 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 transform active:scale-95 shadow-lg min-h-[48px]">
+                            <i class="fas fa-search"></i> <span>Consultar</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Resultados -->
+        <div id="resultados-box" class="hidden space-y-4"></div>
+
+    </main>
+
+    <!-- Toast de Notificación Estilizado -->
+    <div id="toast" class="fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 bg-nature-900/95 border border-nature-accent text-white px-4 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none flex items-center justify-between gap-3 text-xs sm:text-sm backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <i id="toast-icon" class="fas fa-circle-check text-nature-accent text-lg flex-shrink-0"></i>
+            <span id="toast-msg">Mensaje</span>
+        </div>
+        <button type="button" onclick="dismissToast()" aria-label="Cerrar notificación" class="text-gray-400 hover:text-white p-1 rounded-lg transition-colors flex-shrink-0 min-w-[32px] min-h-[32px] flex items-center justify-center">
+            <i class="fas fa-times text-xs"></i>
+        </button>
+    </div>
+
+    <footer class="py-6 text-center text-xs text-gray-500 border-t border-nature-800">
+        Maratón Nocaima Trail 2026 • Portal Oficial del Corredor
+    </footer>
+
+    <script>
+        function showToast(msg, tipo = 'info') {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-msg');
+            const iconEl = document.getElementById('toast-icon');
+            if (!toast || !msgEl) return;
+
+            msgEl.innerText = msg;
+            if (iconEl) {
+                if (tipo === 'error') {
+                    iconEl.className = 'fas fa-circle-xmark text-red-400 text-lg flex-shrink-0';
+                    toast.className = 'fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 bg-nature-900/95 border border-red-500 text-white px-4 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform flex items-center justify-between gap-3 text-xs sm:text-sm backdrop-blur-md';
+                } else if (tipo === 'success') {
+                    iconEl.className = 'fas fa-circle-check text-green-400 text-lg flex-shrink-0';
+                    toast.className = 'fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 bg-nature-900/95 border border-green-500 text-white px-4 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform flex items-center justify-between gap-3 text-xs sm:text-sm backdrop-blur-md';
+                } else {
+                    iconEl.className = 'fas fa-circle-info text-nature-accent text-lg flex-shrink-0';
+                    toast.className = 'fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 bg-nature-900/95 border border-nature-accent text-white px-4 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform flex items-center justify-between gap-3 text-xs sm:text-sm backdrop-blur-md';
+                }
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => { dismissToast(); }, 3500);
+        }
+
+        function dismissToast() {
+            const toast = document.getElementById('toast');
+            if (toast) toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+
+        async function handleConsulta(event) {
+            event.preventDefault();
+            const docInput = document.getElementById('input-doc');
+            const doc = docInput.value.trim();
+            const container = document.getElementById('resultados-box');
+            const btn = document.getElementById('btn-buscar');
+
+            if (!doc) {
+                docInput.classList.add('animate-shake', 'border-red-500');
+                setTimeout(() => docInput.classList.remove('animate-shake'), 400);
+                showToast('Ingresa un número de documento válido.', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Buscando...`;
+            container.innerHTML = '';
+            container.classList.remove('hidden');
+
+            try {
+                const res = await fetch('/api/consulta', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ documento: doc })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.ok) {
+                    container.innerHTML = `
+                        <div class="p-6 bg-nature-800 border border-nature-700 rounded-3xl text-center shadow-xl">
+                            <i class="fas fa-id-card-clip text-amber-400 text-3xl mb-3"></i>
+                            <h3 class="text-white font-heading font-black text-lg mb-1">Sin Registros Encontrados</h3>
+                            <p class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto leading-relaxed">${data.mensaje || 'No encontramos ninguna inscripción activa con este documento de identidad.'}</p>
+                            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+                                <a href="index.html#inscripcion" class="px-6 py-3 bg-nature-accent hover:bg-white text-nature-900 font-bold rounded-xl text-xs transition-all shadow-md">
+                                    <i class="fas fa-running mr-1"></i> Inscribirme Ahora
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    showToast('No se encontraron registros para este documento.', 'error');
+                    return;
+                }
+
+                // Renderizar tarjetas de inscripciones encontradas
+                let html = '';
+                data.inscripciones.forEach(ins => {
+                    const esAprobado = ins.estadoPago === 'APROBADO';
+                    const estadoBadge = esAprobado 
+                        ? '<span class="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/40 rounded-full text-xs font-bold">PAGO APROBADO</span>'
+                        : '<span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/40 rounded-full text-xs font-bold">PENDIENTE</span>';
+
+                    html += `
+                        <div class="p-5 sm:p-7 bg-nature-800 border border-nature-accent/50 rounded-3xl shadow-xl space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-nature-700 pb-3 gap-2">
+                                <div>
+                                    <span class="text-xs text-nature-accent font-bold uppercase tracking-wider">${ins.distancia} TRAIL</span>
+                                    <h3 class="text-xl font-heading font-black text-white">${ins.nombres}</h3>
+                                </div>
+                                <div>${estadoBadge}</div>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                                <div class="bg-nature-900/60 p-2.5 rounded-xl border border-nature-700/60">
+                                    <span class="text-gray-400 block text-[11px]">Dorsal Oficial:</span>
+                                    <strong class="text-nature-accent font-heading text-lg">${ins.dorsal ? '#' + ins.dorsal : 'Pendiente'}</strong>
+                                </div>
+                                <div class="bg-nature-900/60 p-2.5 rounded-xl border border-nature-700/60">
+                                    <span class="text-gray-400 block text-[11px]">Categoría:</span>
+                                    <strong class="text-white text-xs">${ins.categoria}</strong>
+                                </div>
+                                <div class="bg-nature-900/60 p-2.5 rounded-xl border border-nature-700/60">
+                                    <span class="text-gray-400 block text-[11px]">Talla Camiseta:</span>
+                                    <strong class="text-nature-earth">Talla ${ins.tallaCamiseta}</strong>
+                                </div>
+                                <div class="bg-nature-900/60 p-2.5 rounded-xl border border-nature-700/60">
+                                    <span class="text-gray-400 block text-[11px]">Referencia:</span>
+                                    <code class="text-gray-300 font-mono text-[10px] break-all">${ins.referencia}</code>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-col sm:flex-row gap-2">
+                                <a href="confirmacion.html?ref=${ins.referencia}" class="flex-1 text-center py-3 px-4 bg-nature-accent text-nature-900 font-black rounded-xl text-xs hover:bg-white transition-all shadow-md flex items-center justify-center gap-2">
+                                    <i class="fas fa-qrcode"></i> <span>Ver Ticket Oficial con QR</span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
+                showToast(`Encontramos ${data.inscripciones.length} inscripción(es).`, 'success');
+
+            } catch (err) {
+                container.innerHTML = `<div class="p-4 bg-red-900/50 text-red-200 text-xs rounded-xl text-center">Error al consultar el servidor. Intenta de nuevo más tarde.</div>`;
+                showToast('Error de conexión al consultar.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-search"></i> <span>Consultar</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

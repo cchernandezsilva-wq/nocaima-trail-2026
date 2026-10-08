@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Organizador | Maratón Nocaima Trail 2026</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4a373'%3E%3Cpath d='m12 2 4.5 9h-3L18 19H6l4.5-8h-3z'/%3E%3C/svg%3E">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        nature: {
+                            500: '#2d6a4f',
+                            600: '#245842',
+                            700: '#1b4332',
+                            800: '#081c15',
+                            900: '#04100c',
+                            accent: '#d4a373',
+                            earth: '#faedcd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media (max-width: 640px) {
+            input, select, textarea { font-size: 16px !important; }
+        }
+        button, a, input, select {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @keyframes modalBoxIn {
+            0% { opacity: 0; transform: scale(0.93) translateY(16px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-box {
+            animation: modalBoxIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-nature-900 text-gray-200 font-sans min-h-screen selection:bg-nature-accent selection:text-nature-900">
+
+    <!-- Modal de Autenticación Rápida -->
+    <div id="modal-auth" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div class="modal-box bg-nature-800 border border-nature-accent/50 p-6 sm:p-8 rounded-3xl max-w-md w-full shadow-2xl text-center space-y-4">
+            <div class="w-14 h-14 bg-nature-700/80 rounded-2xl flex items-center justify-center text-nature-accent text-2xl mx-auto border border-nature-500/30">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="font-heading font-black text-2xl text-white">Acceso al Panel Organizador</h2>
+            <p class="text-xs text-gray-400">Ingresa la clave secreta administrativa de Nocaima Trail 2026 configurada en tu servidor.</p>
+            <form onsubmit="autenticarAdmin(event)" class="space-y-4 pt-2">
+                <input type="password" id="input-admin-key" required placeholder="Clave de administrador..."
+                    class="w-full bg-nature-900 border border-nature-700 rounded-xl px-4 py-3 text-white text-center focus:outline-none focus:border-nature-accent text-sm">
+                <button type="submit" class="w-full py-3 bg-nature-accent hover:bg-white text-nature-900 font-bold rounded-xl text-sm transition-all shadow-lg">
+                    Ingresar al Panel
+                </button>
+            </form>
+            <p id="auth-error" class="hidden text-xs text-red-400 font-semibold"></p>
+        </div>
+    </div>
+
+    <!-- Navegación Superior -->
+    <header class="py-4 px-6 md:px-10 border-b border-nature-700/60 bg-nature-800/80 backdrop-blur-md sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <span class="w-9 h-9 rounded-xl bg-nature-accent flex items-center justify-center text-nature-900 font-black group-hover:scale-105 transition-transform">
+                    <i class="fas fa-mountain"></i>
+                </span>
+                <div>
+                    <h1 class="font-heading font-black text-lg text-white leading-none">NOCAIMA<span class="text-nature-accent">TRAIL</span></h1>
+                    <span class="text-[10px] text-nature-accent uppercase tracking-wider font-bold">Panel de Control Oficial</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="../index.html" class="py-2 px-3 rounded-xl bg-nature-700/60 hover:bg-nature-700 text-gray-300 hover:text-white text-xs flex items-center gap-1.5 transition-colors">
+                    <i class="fas fa-home"></i> <span class="hidden sm:inline">Volver a la Web</span>
+                </a>
+                <button onclick="descargarExcel()" class="py-2 px-4 rounded-xl bg-nature-700 hover:bg-nature-600 text-white font-semibold text-xs transition-colors flex items-center gap-2">
+                    <i class="fas fa-file-excel text-green-400"></i> <span class="hidden sm:inline">Exportar</span> Excel / CSV
+                </button>
+                <button onclick="cargarDatosAdmin()" class="py-2 px-3 rounded-xl bg-nature-700/60 hover:bg-nature-700 text-gray-300 text-xs" title="Refrescar">
+                    <i class="fas fa-sync-alt" id="icon-refresh"></i>
+                </button>
+                <button onclick="cerrarSesionAdmin()" class="py-2 px-3 rounded-xl bg-red-900/40 text-red-300 hover:bg-red-900/70 text-xs" title="Cerrar Sesión">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Dashboard -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 space-y-8">
+
+        <!-- Fila de Tarjetas KPI -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="bg-nature-800/90 border border-nature-700 p-5 rounded-2xl shadow-lg">
+                <span class="text-xs text-gray-400 font-medium block">Total Recaudado</span>
+                <div class="font-heading font-black text-2xl text-nature-accent mt-1" id="kpi-recaudo">$0 COP</div>
+                <span class="text-[11px] text-green-400 mt-1 block"><i class="fas fa-check-circle mr-1"></i> Pagos Wompi Aprobados</span>
+            </div>
+
+            <div class="bg-nature-800/90 border border-nature-700 p-5 rounded-2xl shadow-lg">
+                <span class="text-xs text-gray-400 font-medium block">Atletas Confirmados</span>
+                <div class="font-heading font-black text-2xl text-white mt-1" id="kpi-aprobados">0</div>
+                <span class="text-[11px] text-gray-400 mt-1 block" id="kpi-pendientes">0 en proceso de pago</span>
+            </div>
+
+            <div class="bg-nature-800/90 border border-nature-700 p-5 rounded-2xl shadow-lg">
+                <span class="text-xs text-gray-400 font-medium block">Inscritos por Distancia</span>
+                <div class="flex items-center gap-2 mt-2 text-xs">
+                    <span class="px-2 py-0.5 rounded bg-nature-700 text-white font-bold">5K: <span id="kpi-5k">0</span></span>
+                    <span class="px-2 py-0.5 rounded bg-nature-700 text-nature-accent font-bold">10K: <span id="kpi-10k">0</span></span>
+                    <span class="px-2 py-0.5 rounded bg-nature-700 text-white font-bold">21K: <span id="kpi-21k">0</span></span>
+                </div>
+            </div>
+
+            <div class="bg-nature-800/90 border border-nature-700 p-5 rounded-2xl shadow-lg">
+                <span class="text-xs text-gray-400 font-medium block">Tallas Camiseta (Producción)</span>
+                <div class="flex items-center gap-1.5 mt-2 text-[11px] text-gray-300">
+                    <span class="font-bold">S:<span id="talla-s">0</span></span> •
+                    <span class="font-bold">M:<span id="talla-m">0</span></span> •
+                    <span class="font-bold">L:<span id="talla-l">0</span></span> •
+                    <span class="font-bold">XL:<span id="talla-xl">0</span></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Barra de Búsqueda y Filtros -->
+        <div class="bg-nature-800/90 border border-nature-700 p-4 rounded-2xl shadow-md flex flex-col md:flex-row gap-3 items-center justify-between">
+            <div class="relative w-full md:w-96">
+                <i class="fas fa-search absolute left-3.5 top-3 text-gray-400 text-sm"></i>
+                <input type="text" id="filtro-busqueda" oninput="aplicarFiltros()" placeholder="Buscar por Nombre, Cédula o Dorsal..."
+                    class="w-full bg-nature-900 border border-nature-700 rounded-xl pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-nature-accent">
+            </div>
+
+            <div class="flex gap-2 w-full md:w-auto">
+                <select id="filtro-distancia" onchange="aplicarFiltros()"
+                    class="bg-nature-900 border border-nature-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <option value="">Todas las Distancias</option>
+                    <option value="5k">5K Familiar</option>
+                    <option value="10k">10K Desafío</option>
+                    <option value="21k">21K Élite</option>
+                </select>
+
+                <select id="filtro-estado" onchange="aplicarFiltros()"
+                    class="bg-nature-900 border border-nature-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <option value="">Todos los Estados</option>
+                    <option value="APROBADO">Aprobados</option>
+                    <option value="PENDIENTE">Pendientes</option>
+                    <option value="DECLINADO">Rechazados</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tabla de Inscritos -->
+        <div class="bg-nature-800 border border-nature-700/80 rounded-3xl overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-gray-300">
+                    <thead class="bg-nature-900/90 text-gray-400 uppercase text-[10px] font-bold tracking-wider border-b border-nature-700">
+                        <tr>
+                            <th class="py-3.5 px-4">Dorsal</th>
+                            <th class="py-3.5 px-4">Atleta</th>
+                            <th class="py-3.5 px-4">Documento</th>
+                            <th class="py-3.5 px-4">Distancia & Cat</th>
+                            <th class="py-3.5 px-4">Talla</th>
+                            <th class="py-3.5 px-4">Valor</th>
+                            <th class="py-3.5 px-4">Estado Pago</th>
+                            <th class="py-3.5 px-4">Kit Entrega</th>
+                            <th class="py-3.5 px-4 text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-inscritos" class="divide-y divide-nature-700/50">
+                        <tr>
+                            <td colspan="9" class="text-center py-10 text-gray-500">Cargando base de datos de corredores...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal Detalle Completo del Atleta -->
+    <div id="modal-detalle-atleta" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden" onclick="if(event.target===this) cerrarModalDetalle()">
+        <div class="modal-box bg-nature-800 border border-nature-accent/40 rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[92dvh] overflow-y-auto shadow-2xl space-y-6 text-gray-200">
+            <div class="flex items-start justify-between border-b border-nature-700/60 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-nature-700/80 border border-nature-500/30 flex items-center justify-center text-nature-accent text-xl">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-black text-xl text-white" id="modal-det-nombre">Nombre del Atleta</h3>
+                        <p class="text-xs text-nature-accent font-mono" id="modal-det-ref">REF-000000</p>
+                    </div>
+                </div>
+                <button onclick="cerrarModalDetalle()" class="w-10 h-10 rounded-xl bg-nature-900/60 hover:bg-nature-700 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Fila de Estado y Dorsal -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-nature-900/60 p-4 rounded-2xl border border-nature-700/50 text-center">
+                <div>
+                    <span class="text-[10px] uppercase text-gray-400 block font-semibold">Dorsal</span>
+                    <span class="font-heading font-black text-xl text-nature-accent" id="modal-det-dorsal">-</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase text-gray-400 block font-semibold">Distancia</span>
+                    <span class="font-bold text-base text-white" id="modal-det-distancia">-</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase text-gray-400 block font-semibold">Estado Pago</span>
+                    <span class="font-bold text-xs" id="modal-det-estado">-</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase text-gray-400 block font-semibold">Kit Físico</span>
+                    <span class="font-bold text-xs" id="modal-det-kit">-</span>
+                </div>
+            </div>
+
+            <!-- Información Personal y Logística -->
+            <div class="space-y-4 text-xs">
+                <div>
+                    <h4 class="text-nature-accent uppercase font-black text-[11px] tracking-wider mb-2 flex items-center gap-1.5">
+                        <i class="fas fa-user"></i> Datos del Corredor
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-nature-900/40 p-4 rounded-2xl border border-nature-700/40">
+                        <div><strong class="text-gray-400">Documento:</strong> <span class="text-white ml-1 font-semibold" id="modal-det-doc">-</span></div>
+                        <div><strong class="text-gray-400">Email:</strong> <span class="text-white ml-1" id="modal-det-email">-</span></div>
+                        <div><strong class="text-gray-400">Teléfono:</strong> <span class="text-white ml-1" id="modal-det-tel">-</span></div>
+                        <div><strong class="text-gray-400">Género:</strong> <span class="text-white ml-1" id="modal-det-genero">-</span></div>
+                        <div><strong class="text-gray-400">Categoría:</strong> <span class="text-white ml-1" id="modal-det-categoria">-</span></div>
+                        <div><strong class="text-gray-400">Talla Camiseta:</strong> <span class="text-nature-earth ml-1 font-bold" id="modal-det-talla">-</span></div>
+                        <div><strong class="text-gray-400">EPS:</strong> <span class="text-white ml-1" id="modal-det-eps">-</span></div>
+                        <div><strong class="text-gray-400">Total Pagado:</strong> <span class="text-green-400 ml-1 font-bold" id="modal-det-valor">-</span></div>
+                    </div>
+                </div>
+
+                <!-- Contacto de Emergencia -->
+                <div>
+                    <h4 class="text-nature-accent uppercase font-black text-[11px] tracking-wider mb-2 flex items-center gap-1.5">
+                        <i class="fas fa-heartbeat text-red-400"></i> Contacto de Emergencia en Ruta
+                    </h4>
+                    <div class="bg-nature-900/40 p-4 rounded-2xl border border-nature-700/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div>
+                            <span class="text-white font-bold block text-sm" id="modal-det-emergencia-nom">No especificado</span>
+                            <span class="text-gray-400 font-mono text-xs" id="modal-det-emergencia-tel">-</span>
+                        </div>
+                        <a id="btn-llamar-emergencia" href="#" class="px-4 py-2 rounded-xl bg-red-900/60 hover:bg-red-800 text-red-200 font-bold flex items-center gap-2 transition-colors">
+                            <i class="fas fa-phone-alt"></i> Llamar Emergencia
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sección Menor de Edad (Condicional) -->
+                <div id="modal-det-seccion-menor" class="hidden">
+                    <h4 class="text-blue-300 uppercase font-black text-[11px] tracking-wider mb-2 flex items-center gap-1.5">
+                        <i class="fas fa-user-shield"></i> Acudiente / Tutor Legal (Menor de Edad)
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-nature-900/40 p-4 rounded-2xl border border-blue-900/40">
+                        <div><strong class="text-gray-400">Nombre Tutor:</strong> <span class="text-white ml-1 font-semibold" id="modal-det-tutor-nom">-</span></div>
+                        <div><strong class="text-gray-400">Documento:</strong> <span class="text-white ml-1" id="modal-det-tutor-doc">-</span></div>
+                        <div><strong class="text-gray-400">Teléfono:</strong> <span class="text-white ml-1 font-mono" id="modal-det-tutor-tel">-</span></div>
+                        <div><strong class="text-gray-400">Parentesco:</strong> <span class="text-white ml-1" id="modal-det-tutor-parentesco">-</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción del Modal -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-nature-700/60">
+                <button onclick="copiarTicketLink(currentModalRef)" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-nature-700 hover:bg-nature-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                    <i class="fas fa-copy"></i> Copiar Link del Ticket
+                </button>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <a id="modal-det-link-ticket" href="#" target="_blank" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                        <i class="fas fa-external-link-alt"></i> Abrir Ticket Digital
+                    </a>
+                    <button onclick="cerrarModalDetalle()" class="px-4 py-2.5 rounded-xl bg-nature-900 hover:bg-nature-700 text-gray-300 font-semibold text-xs transition-colors">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación y Alerta del Admin (100% CSS sin confirm() ni alert()) -->
+    <div id="modal-admin-alert" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+        <div class="modal-box bg-nature-800 border border-nature-accent/60 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl text-center space-y-4">
+            <div id="admin-alert-icon-box" class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mx-auto shadow-inner bg-nature-700/60 text-nature-accent border border-nature-500/30">
+                <i id="admin-alert-icon" class="fas fa-info-circle"></i>
+            </div>
+            <h3 id="admin-alert-title" class="font-heading font-black text-xl text-white">Mensaje del Sistema</h3>
+            <p id="admin-alert-msg" class="text-xs text-gray-300 leading-relaxed">Contenido del mensaje...</p>
+            <div id="admin-alert-actions" class="flex items-center justify-center gap-3 pt-3">
+                <button id="admin-alert-btn-cancel" onclick="cerrarAdminAlert()" class="px-5 py-2.5 rounded-xl bg-nature-900 border border-nature-700 hover:bg-nature-700 text-gray-300 font-semibold text-xs transition-colors hidden">
+                    Cancelar
+                </button>
+                <button id="admin-alert-btn-ok" onclick="cerrarAdminAlert()" class="px-6 py-2.5 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-bold text-xs shadow-lg transition-all">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast flotante para feedback inmediato -->
+    <div id="admin-toast" class="fixed bottom-6 right-6 z-50 bg-nature-800 border border-nature-accent/80 text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-semibold flex items-center gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <i class="fas fa-check-circle text-green-400 text-sm"></i>
+        <span id="admin-toast-msg">Mensaje copiado</span>
+    </div>
+
+    <script src="../assets/js/admin.js"></script>
+
+</body>
+</html>

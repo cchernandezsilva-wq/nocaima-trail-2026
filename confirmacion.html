@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Inscripción | Maratón Nocaima Trail 2026</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23081c15'/><path d='M15 75 L45 25 L65 55 L75 40 L90 75 Z' fill='%23d4a373'/><path d='M35 75 L55 35 L75 75 Z' fill='%232d6a4f'/><circle cx='80' cy='25' r='8' fill='%23faedcd'/></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        nature: {
+                            50: '#f0f9f3',
+                            500: '#2d6a4f',
+                            600: '#245842',
+                            700: '#1b4332',
+                            800: '#081c15',
+                            900: '#04100c',
+                            accent: '#d4a373',
+                            earth: '#faedcd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- QRCode.js para generar el código QR del ticket -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        @media (max-width: 640px) {
+            input, select, textarea { font-size: 16px !important; }
+        }
+        button, a {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .ticket-card { border: 2px solid #000 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; }
+            .ticket-text-white { color: #000 !important; }
+            .ticket-badge { background: #eee !important; color: #000 !important; }
+        }
+    </style>
+</head>
+
+<body class="bg-nature-900 text-gray-200 font-sans min-h-screen flex flex-col justify-between selection:bg-nature-accent selection:text-nature-900">
+
+    <!-- Header Simple -->
+    <header class="py-6 px-6 border-b border-nature-700/50 bg-nature-800/80 backdrop-blur-md no-print">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 font-heading font-black text-xl text-white">
+                <span class="w-8 h-8 rounded-lg bg-nature-accent flex items-center justify-center text-nature-900">
+                    <i class="fas fa-mountain"></i>
+                </span>
+                <span>NOCAIMA<span class="text-nature-accent">TRAIL</span></span>
+            </a>
+            <a href="index.html" class="text-sm text-gray-300 hover:text-nature-accent flex items-center gap-1.5 transition-colors">
+                <i class="fas fa-arrow-left"></i> Volver a la Carrera
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-3xl mx-auto px-4 py-10 w-full flex-grow flex items-center justify-center">
+        
+        <!-- Estado: Cargando -->
+        <div id="view-loading" class="text-center py-16">
+            <div class="w-16 h-16 border-4 border-nature-accent/30 border-t-nature-accent rounded-full animate-spin mx-auto mb-6"></div>
+            <h2 class="font-heading font-bold text-2xl text-white mb-2">Verificando tu Pago en Wompi...</h2>
+            <p class="text-gray-400 text-sm max-w-md mx-auto">Estamos sincronizando el comprobante con la pasarela bancaria. Esto tomará sólo unos segundos.</p>
+        </div>
+
+        <!-- Estado: APROBADO -->
+        <div id="view-approved" class="hidden w-full space-y-6">
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-500/20 border-2 border-green-500 rounded-full flex items-center justify-center text-green-400 text-3xl mx-auto mb-4 animate-bounce">
+                    <i class="fas fa-check"></i>
+                </div>
+                <span class="text-xs uppercase font-extrabold tracking-widest text-green-400">¡Inscripción Exitosa!</span>
+                <h1 class="font-heading font-black text-3xl sm:text-4xl text-white mt-1">¡Nos vemos en la Montaña!</h1>
+                <p class="text-gray-300 text-sm mt-1">Tu pago fue procesado correctamente. Guarda o imprime este ticket oficial para reclamar tu kit.</p>
+            </div>
+
+            <!-- TICKET DIGITAL OFICIAL / CREDENCIAL DEL CORREDOR -->
+            <div class="ticket-card bg-nature-800 border-2 border-nature-accent/70 rounded-3xl overflow-hidden shadow-2xl relative">
+                
+                <!-- Encabezado del Ticket -->
+                <div class="bg-gradient-to-r from-nature-700 via-nature-600 to-nature-700 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-nature-accent/40">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-nature-accent text-nature-900 font-extrabold text-[10px] uppercase tracking-wider">PASAPORTE OFICIAL</span>
+                            <span id="ticket-dist-badge" class="px-2.5 py-0.5 rounded-full bg-nature-900/80 text-white font-bold text-[10px]">10K TRAIL</span>
+                        </div>
+                        <h2 class="font-heading font-black text-2xl text-white mt-1">Maratón Nocaima Trail 2026</h2>
+                        <p class="text-xs text-nature-earth">15 de Noviembre de 2026 • Parque Principal de Nocaima</p>
+                    </div>
+
+                    <!-- Gran Número de Dorsal -->
+                    <div class="text-center sm:text-right bg-nature-900/70 border border-nature-accent/50 px-6 py-3 rounded-2xl">
+                        <span class="text-[10px] uppercase font-bold text-gray-400 block tracking-widest">DORSAL OFICIAL</span>
+                        <span id="ticket-dorsal" class="font-heading font-black text-4xl text-nature-accent">#----</span>
+                    </div>
+                </div>
+
+                <!-- Cuerpo del Ticket -->
+                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    
+                    <!-- Datos del Atleta -->
+                    <div class="md:col-span-2 space-y-3.5 text-sm">
+                        <div class="grid grid-cols-2 gap-3 pb-3 border-b border-nature-700/50">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Atleta Inscrito:</span>
+                                <strong id="ticket-nombre" class="text-white text-base font-semibold">-</strong>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 block">Documento de Identidad:</span>
+                                <strong id="ticket-doc" class="text-white">-</strong>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 pb-3 border-b border-nature-700/50 text-xs">
+                            <div>
+                                <span class="text-gray-400 block">Categoría:</span>
+                                <strong id="ticket-cat" class="text-white text-xs">-</strong>
+                            </div>
+                            <div>
+                                <span class="text-gray-400 block">Talla Camiseta:</span>
+                                <strong id="ticket-talla" class="text-nature-accent font-bold text-sm">-</strong>
+                            </div>
+                            <div>
+                                <span class="text-gray-400 block">Distancia:</span>
+                                <strong id="ticket-dist" class="text-white font-bold">-</strong>
+                            </div>
+                        </div>
+
+                        <div id="ticket-acudiente-box" class="hidden p-3 bg-nature-900/60 rounded-xl border border-nature-700/70 text-xs">
+                            <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-user-shield mr-1"></i> Participante Menor de Edad</span>
+                            <span class="text-gray-300">Adulto Responsable: <strong id="ticket-acudiente">-</strong></span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-xs text-gray-400 pt-1">
+                            <div>
+                                <span>Referencia de Pago:</span>
+                                <code id="ticket-ref" class="text-gray-200 block font-mono text-[11px]">-</code>
+                            </div>
+                            <div>
+                                <span>Total Pagado:</span>
+                                <strong id="ticket-total" class="text-green-400 block font-heading text-sm">$0 COP</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Código QR Dinámico -->
+                    <div class="flex flex-col items-center justify-center p-4 bg-white rounded-2xl shadow-inner text-center">
+                        <div id="ticket-qrcode" class="p-1"></div>
+                        <span class="text-[10px] text-gray-600 font-bold uppercase tracking-wider mt-2">Escaneo de Control • Kit</span>
+                    </div>
+
+                </div>
+
+                <!-- Footer del Ticket -->
+                <div class="bg-nature-900/90 px-6 py-4 border-t border-nature-700/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+                    <div>
+                        <i class="fas fa-info-circle text-nature-accent mr-1"></i>
+                        Presenta este documento o tu cédula en la mesa técnica para recibir tu kit.
+                    </div>
+                    <div class="text-[11px] text-nature-accent font-semibold">
+                        Estado: <span class="text-green-400 font-bold">PAGO APROBADO POR WOMPI</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Acciones -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button onclick="window.print()" class="flex-1 py-3.5 px-6 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-black text-sm transition-all shadow-lg flex items-center justify-center gap-2 transform active:scale-95">
+                    <i class="fas fa-print"></i> Imprimir / Guardar PDF
+                </button>
+                <button onclick="compartirWhatsApp()" class="flex-1 py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2 transform active:scale-95">
+                    <i class="fab fa-whatsapp text-lg"></i> Compartir mi Dorsal
+                </button>
+                <a href="consulta.html" class="py-3.5 px-5 rounded-xl bg-nature-700 hover:bg-nature-600 text-white font-semibold text-sm transition-colors text-center flex items-center justify-center gap-2">
+                    <i class="fas fa-search"></i> Consultar
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Estado: PENDIENTE -->
+        <div id="view-pending" class="hidden w-full max-w-xl bg-nature-800 border border-yellow-500/50 p-8 rounded-3xl text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 bg-yellow-500/20 border-2 border-yellow-500 rounded-full flex items-center justify-center text-yellow-400 text-3xl mx-auto">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h2 class="font-heading font-black text-2xl text-white">Pago en Proceso de Verificación</h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Tu transacción bancaria está en proceso. Si pagaste a través de PSE o Corresponsal Bancario, la confirmación puede tardar unos minutos en reflejarse.
+            </p>
+            <div class="bg-nature-900/80 p-4 rounded-xl border border-nature-700 text-left text-xs space-y-1">
+                <div>Referencia: <code id="pending-ref" class="text-nature-accent font-bold">-</code></div>
+                <div>Atleta: <strong id="pending-nombre" class="text-white">-</strong></div>
+            </div>
+            <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                <button onclick="location.reload()" class="flex-1 py-3 bg-nature-accent text-nature-900 font-bold rounded-xl text-sm hover:bg-white">
+                    <i class="fas fa-sync-alt mr-1"></i> Actualizar Estado
+                </button>
+                <a href="index.html" class="flex-1 py-3 bg-nature-700 text-white font-semibold rounded-xl text-sm text-center">
+                    Volver al Inicio
+                </a>
+            </div>
+        </div>
+
+        <!-- Estado: DECLINADO / ERROR -->
+        <div id="view-declined" class="hidden w-full max-w-xl bg-nature-800 border border-red-500/50 p-8 rounded-3xl text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 bg-red-500/20 border-2 border-red-500 rounded-full flex items-center justify-center text-red-400 text-3xl mx-auto">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="font-heading font-black text-2xl text-white">El Pago no fue Completado</h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                La entidad bancaria o pasarela Wompi rechazó la transacción. No se ha realizado ningún cobro a tu cuenta.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                <a href="index.html" class="flex-1 py-3 bg-nature-accent text-nature-900 font-bold rounded-xl text-sm text-center hover:bg-white">
+                    <i class="fas fa-redo mr-1"></i> Intentar Inscripción Nuevamente
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="py-6 text-center text-xs text-gray-500 border-t border-nature-800 no-print">
+        Maratón Nocaima Trail 2026 • Plataforma Oficial de Pagos Seguros con Wompi Bancolombia
+    </footer>
+
+    <!-- Script de lógica de confirmación -->
+    <script>
+        async function cargarEstadoInscripcion() {
+            // Extracción robusta de parámetros (incluso si la pasarela concatena con ? o &)
+            let ref = null;
+            let id = null;
+
+            try {
+                const params = new URLSearchParams(window.location.search);
+                ref = params.get('ref');
+                id = params.get('id');
+            } catch (_) {}
+
+            if (!id) {
+                const matchId = window.location.href.match(/[?&]id=([^&#]+)/i);
+                if (matchId) id = decodeURIComponent(matchId[1]);
+            }
+            if (!ref) {
+                const matchRef = window.location.href.match(/[?&]ref=([^&#]+)/i);
+                if (matchRef) ref = decodeURIComponent(matchRef[1]);
+            }
+            if (ref) {
+                ref = ref.split('?')[0].split('&')[0];
+            }
+            if (id) {
+                id = id.split('?')[0].split('&')[0];
+            }
+
+            if (!ref && !id) {
+                mostrarVista('declined');
+                return;
+            }
+
+            try {
+                const endpoint = `/api/estado?ref=${encodeURIComponent(ref || '')}&id=${encodeURIComponent(id || '')}`;
+                const res = await fetch(endpoint);
+                const data = await res.json();
+
+                if (!res.ok || !data.ok || !data.inscripcion) {
+                    mostrarVista('declined');
+                    return;
+                }
+
+                const ins = data.inscripcion;
+
+                if (ins.estadoPago === 'APROBADO') {
+                    // Llenar datos del ticket
+                    document.getElementById('ticket-nombre').innerText = ins.nombres;
+                    document.getElementById('ticket-doc').innerText = `${ins.tipoDocumento || 'CC'} ${ins.documento}`;
+                    document.getElementById('ticket-dorsal').innerText = `#${ins.dorsal || '----'}`;
+                    document.getElementById('ticket-dist').innerText = ins.distancia;
+                    document.getElementById('ticket-dist-badge').innerText = `${ins.distancia} TRAIL`;
+                    document.getElementById('ticket-cat').innerText = ins.categoria;
+                    document.getElementById('ticket-talla').innerText = `Talla ${ins.tallaCamiseta}`;
+                    document.getElementById('ticket-ref').innerText = ins.referencia;
+                    document.getElementById('ticket-total').innerText = `$${(ins.totalPagarCOP || 0).toLocaleString('es-CO')} COP`;
+
+                    if (ins.esMenorEdad && ins.nombreAcudiente) {
+                        document.getElementById('ticket-acudiente-box').classList.remove('hidden');
+                        document.getElementById('ticket-acudiente').innerText = ins.nombreAcudiente;
+                    }
+
+                    // Generar código QR dinámico
+                    const qrContainer = document.getElementById('ticket-qrcode');
+                    qrContainer.innerHTML = '';
+                    new QRCode(qrContainer, {
+                        text: `NOCAIMA-TRAIL-2026|REF:${ins.referencia}|DORSAL:${ins.dorsal}|DOC:${ins.documento}|DIST:${ins.distancia}`,
+                        width: 130,
+                        height: 130,
+                        colorDark: "#04100c",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+
+                    mostrarVista('approved');
+
+                } else if (ins.estadoPago === 'PENDIENTE') {
+                    document.getElementById('pending-ref').innerText = ins.referencia;
+                    document.getElementById('pending-nombre').innerText = ins.nombres;
+                    mostrarVista('pending');
+
+                    // Auto-reintentar cada 4 segundos durante los primeros 2 minutos
+                    setTimeout(cargarEstadoInscripcion, 4000);
+
+                } else {
+                    mostrarVista('declined');
+                }
+
+            } catch (err) {
+                console.error('Error cargando estado:', err);
+                mostrarVista('declined');
+            }
+        }
+
+        function mostrarVista(vista) {
+            document.getElementById('view-loading').classList.add('hidden');
+            document.getElementById('view-approved').classList.add('hidden');
+            document.getElementById('view-pending').classList.add('hidden');
+            document.getElementById('view-declined').classList.add('hidden');
+            const target = document.getElementById(`view-${vista}`);
+            if (target) target.classList.remove('hidden');
+        }
+
+        function compartirWhatsApp() {
+            const dorsal = document.getElementById('ticket-dorsal')?.innerText || '';
+            const dist = document.getElementById('ticket-dist')?.innerText || '';
+            const text = encodeURIComponent(`¡Ya estoy oficialmente confirmado para la Maratón Nocaima Trail 2026! ⛰️🏃\nMi Dorsal oficial es ${dorsal} en la distancia ${dist}.\n¡Nos vemos en los senderos este 15 de Noviembre! 🏃💨`);
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarEstadoInscripcion);
+    </script>
+
+</body>
+</html>

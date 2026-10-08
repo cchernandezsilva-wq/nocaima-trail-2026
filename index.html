@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maratón Nocaima Trail 2026 | 5K • 10K • 21K | Cundinamarca, Colombia</title>
+    <meta name="description"
+        content="Desafía tus límites en la carrera de montaña más emocionante de Cundinamarca este 15 de Noviembre de 2026. Rutas 5K, 10K y 21K por los majestuosos senderos de Nocaima.">
+    
+    <!-- Favicon Oficial Vectorial -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23081c15'/><path d='M15 75 L45 25 L65 55 L75 40 L90 75 Z' fill='%23d4a373'/><path d='M35 75 L55 35 L75 75 Z' fill='%232d6a4f'/><circle cx='80' cy='25' r='8' fill='%23faedcd'/></svg>">
+    
+    <!-- Open Graph / Redes Sociales & WhatsApp Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Maratón Nocaima Trail 2026 | 5K • 10K • 21K">
+    <meta property="og:description" content="Inscripciones oficiales y pagos seguros en línea para la carrera de montaña más emocionante de Cundinamarca. Nocaima, 15 de Noviembre de 2026.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=1200">
+    <meta property="og:url" content="https://nocaimatrail.com">
+    <meta name="theme-color" content="#081c15">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Wompi Checkout Widget Oficial -->
+    <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        nature: {
+                            50: '#f0f9f3',
+                            100: '#e8f3ec',
+                            200: '#b7dfc8',
+                            300: '#74c69d',
+                            400: '#52b788',
+                            500: '#2d6a4f', // Verde Principal
+                            600: '#245842',
+                            700: '#1b4332', // Verde Oscuro Bosque
+                            800: '#081c15', // Verde Muy Oscuro
+                            900: '#04100c',
+                            accent: '#d4a373', // Tono Tierra / Dorado
+                            'accent-hover': '#c28e5c',
+                            earth: '#faedcd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #081c15;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2d6a4f;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4a373;
+        }
+
+        /* Scroll Animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Parallax Overlay */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(8, 28, 21, 0.55) 0%, rgba(8, 28, 21, 0.85) 60%, rgba(8, 28, 21, 1) 100%);
+        }
+
+        /* Card Hover Effects */
+        .route-card {
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .route-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(45, 106, 79, 0.25);
+        }
+
+        /* Animated gradient text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, #d4a373 0%, #fefae0 50%, #d4a373 100%);
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.35s ease-out, opacity 0.35s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* Glassmorphism helpers */
+        .glass-card {
+            background: rgba(27, 67, 50, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(82, 183, 136, 0.2);
+        }
+
+        .glass-card-accent {
+            background: rgba(27, 67, 50, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 163, 115, 0.4);
+        }
+
+        /* Modal Transitions & Glassmorphism Backdrop */
+        .modal {
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .modal:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Modal Dialog Box Smooth Entrance Animation */
+        @keyframes modalBoxIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.93) translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .modal:not(.hidden) .modal-box {
+            animation: modalBoxIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Mobile inputs font-size protection (prevents forced iOS Safari zoom) */
+        @media (max-width: 640px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Touch interaction optimizations */
+        button, a, input, select, label {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Shake animation for input errors */
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shakeError 0.38s ease-in-out;
+        }
+
+        /* Dynamic Pulse Glow for Alerts */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); }
+        }
+        .alert-glow {
+            animation: glowPulse 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-nature-800 text-gray-200 font-sans antialiased selection:bg-nature-accent selection:text-nature-900">
+
+    <!-- ========================================================== -->
+    <!-- NAVIGATION BAR -->
+    <!-- ========================================================== -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-nature-800/80 backdrop-blur-md border-b border-nature-500/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 font-heading font-black text-2xl tracking-tighter text-white group">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-nature-500 to-nature-accent flex items-center justify-center text-nature-900 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-mountain text-lg"></i>
+                </span>
+                <span>NOCAIMA<span class="text-nature-accent">TRAIL</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center space-x-6 font-medium text-sm">
+                <a href="#recorridos" class="text-gray-300 hover:text-nature-accent transition-colors">Recorridos</a>
+                <a href="#cronograma" class="text-gray-300 hover:text-nature-accent transition-colors">Cronograma</a>
+                <a href="#categorias" class="text-gray-300 hover:text-nature-accent transition-colors">Categorías</a>
+                <a href="#premios" class="text-gray-300 hover:text-nature-accent transition-colors">Premios</a>
+                <a href="#inscripcion" class="text-gray-300 hover:text-nature-accent transition-colors">Tarifas</a>
+                <a href="consulta.html" class="text-nature-accent hover:text-white font-semibold transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-nature-900/60 border border-nature-accent/40 hover:border-nature-accent">
+                    <i class="fas fa-search text-xs"></i> Consultar Atleta
+                </a>
+            </div>
+
+            <!-- Action Button Desktop -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="admin/index.html" title="Panel Organizador (Admin)"
+                    class="py-2 px-3.5 rounded-full bg-nature-900/80 hover:bg-nature-700 text-gray-300 hover:text-nature-accent border border-nature-700 hover:border-nature-accent transition-all flex items-center gap-1.5 text-xs font-semibold">
+                    <i class="fas fa-lock text-xs text-nature-accent"></i> <span>Admin</span>
+                </a>
+                <button onclick="openRegistrationModal()"
+                    class="bg-nature-accent text-nature-900 font-bold py-2.5 px-6 rounded-full hover:bg-white transition-all shadow-[0_0_15px_rgba(212,163,115,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                    <i class="fas fa-running mr-1.5"></i> Inscribirme
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" aria-label="Abrir Menú" class="lg:hidden text-white text-2xl focus:outline-none p-2 rounded-lg hover:bg-nature-700/50">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden lg:hidden pt-4 pb-6 px-2 space-y-3 border-t border-nature-500/20 mt-3 animate-fadeIn">
+            <a href="#recorridos" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Recorridos (5K, 10K, 21K)</a>
+            <a href="#cronograma" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Cronograma Oficial</a>
+            <a href="#categorias" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Categorías de Competencia</a>
+            <a href="#premios" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Premios & Podio</a>
+            <a href="#inscripcion" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Tarifas y Kit del Corredor</a>
+            <a href="#seguridad" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Equipo Obligatorio</a>
+            <a href="#destino" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Destino Nocaima & Llegada</a>
+            <a href="#faq" class="block py-2 px-4 rounded-lg text-gray-200 hover:bg-nature-700 hover:text-nature-accent transition-colors">Preguntas Frecuentes</a>
+            
+            <div class="border-t border-nature-700/50 pt-2 space-y-2">
+                <a href="consulta.html" class="block py-2.5 px-4 rounded-xl bg-nature-700/50 text-nature-accent font-bold hover:bg-nature-700 transition-colors flex items-center gap-2">
+                    <i class="fas fa-search"></i> Consultar Mi Inscripción (Dorsal & QR)
+                </a>
+                <a href="admin/index.html" class="block py-2 px-4 rounded-lg text-amber-300 hover:bg-nature-700 transition-colors flex items-center gap-2 text-xs font-semibold">
+                    <i class="fas fa-lock"></i> Panel Administrador (Organizador)
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="openRegistrationModal(); toggleMobileMenu();"
+                    class="w-full bg-nature-accent text-nature-900 font-bold py-3 rounded-xl hover:bg-white transition-all text-center">
+                    <i class="fas fa-running mr-1.5"></i> Inscribirme Ahora
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================================== -->
+    <!-- HERO SECTION WITH PARALLAX & METRICS -->
+    <!-- ========================================================== -->
+    <header class="relative min-h-screen flex items-center justify-center bg-fixed bg-center bg-cover pt-28 pb-16"
+        style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=1920');">
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in-section">
+            <!-- Event Location and Date Badge -->
+            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-nature-500/30 border border-nature-400/50 text-nature-100 text-xs md:text-sm font-semibold tracking-wider mb-6 backdrop-blur-md shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-nature-accent animate-ping"></span>
+                <span>15 DE NOVIEMBRE, 2026 • NOCAIMA, CUNDINAMARCA</span>
+            </div>
+
+            <!-- Quick Climatic & Travel Chips -->
+            <div class="flex flex-wrap justify-center items-center gap-3 mb-6 text-xs md:text-sm text-gray-300">
+                <span class="bg-nature-900/60 backdrop-blur-sm border border-nature-500/30 px-3 py-1 rounded-full"><i class="fas fa-temperature-three-quarters text-nature-accent mr-1"></i> 24°C Clima Ideal</span>
+                <span class="bg-nature-900/60 backdrop-blur-sm border border-nature-500/30 px-3 py-1 rounded-full"><i class="fas fa-mountain text-nature-accent mr-1"></i> 1.100 m.s.n.m</span>
+                <span class="bg-nature-900/60 backdrop-blur-sm border border-nature-500/30 px-3 py-1 rounded-full"><i class="fas fa-route text-nature-accent mr-1"></i> A 1h45m de Bogotá (Calle 80)</span>
+            </div>
+
+            <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight mb-6 uppercase tracking-tight">
+                Conquista la <br>
+                <span class="text-gradient">Montaña</span>
+            </h1>
+
+            <p class="text-base sm:text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                Desafía tus límites entre senderos paneleros, bosques tropicales y quebradas cristalinas.
+                Tres distancias diseñadas para atletas de todos los niveles.
+            </p>
+
+            <!-- Dual CTA Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                <button onclick="openRegistrationModal()"
+                    class="w-full sm:w-auto bg-nature-accent text-nature-900 hover:bg-white font-black text-lg py-4 px-9 rounded-2xl transition-all shadow-[0_0_25px_rgba(212,163,115,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] transform hover:-translate-y-1">
+                    <i class="fas fa-ticket mr-2"></i> Inscribirme Ahora (Preventa)
+                </button>
+                <a href="#recorridos"
+                    class="w-full sm:w-auto bg-nature-700/60 hover:bg-nature-700 text-white border border-nature-400/40 font-bold text-lg py-4 px-8 rounded-2xl transition-all backdrop-blur-sm hover:border-nature-accent">
+                    <i class="fas fa-map-marked-alt mr-2 text-nature-accent"></i> Ver Recorridos
+                </a>
+            </div>
+
+            <!-- Accesos Rápidos Principales -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs">
+                <a href="consulta.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-nature-900/80 border border-nature-accent/50 text-nature-earth hover:bg-nature-accent hover:text-nature-900 font-semibold transition-all backdrop-blur-sm shadow-md">
+                    <i class="fas fa-search text-[11px] text-nature-accent"></i> Consultar Mi Inscripción (QR)
+                </a>
+                <a href="admin/index.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-nature-900/80 border border-amber-500/40 text-amber-300 hover:bg-amber-500 hover:text-nature-900 font-semibold transition-all backdrop-blur-sm shadow-md">
+                    <i class="fas fa-lock text-[11px]"></i> Panel Organizador (Admin)
+                </a>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="max-w-2xl mx-auto">
+                <p class="text-xs uppercase tracking-widest text-nature-accent font-semibold mb-3">Tiempo restante para la largada:</p>
+                <div class="grid grid-cols-4 gap-3 sm:gap-6">
+                    <div class="flex flex-col items-center">
+                        <div id="days"
+                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            00</div>
+                        <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Días</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div id="hours"
+                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            00</div>
+                        <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Horas</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div id="minutes"
+                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            00</div>
+                        <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Minutos</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div id="seconds"
+                            class="text-3xl sm:text-5xl font-heading font-black text-nature-accent bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-accent/60 shadow-[0_0_15px_rgba(212,163,115,0.25)]">
+                            00</div>
+                        <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Segundos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <div class="mt-12">
+                <a href="#stats-bar" aria-label="Ir abajo"
+                    class="text-gray-400 hover:text-nature-accent transition-colors text-2xl animate-bounce inline-block">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================== -->
+    <!-- STATS HIGHLIGHT BAR -->
+    <!-- ========================================================== -->
+    <section id="stats-bar" class="bg-nature-900 border-y border-nature-500/20 py-8 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4 border-r border-nature-700/50 last:border-none">
+                <div class="font-heading font-black text-3xl md:text-4xl text-nature-accent mb-1">3</div>
+                <div class="text-xs md:text-sm text-gray-300 font-medium">Distancias Oficiales (5K, 10K, 21K)</div>
+            </div>
+            <div class="p-4 md:border-r border-nature-700/50 last:border-none">
+                <div class="font-heading font-black text-3xl md:text-4xl text-white mb-1">1.000+</div>
+                <div class="text-xs md:text-sm text-gray-300 font-medium">Corredores Esperados</div>
+            </div>
+            <div class="p-4 border-r border-nature-700/50 last:border-none">
+                <div class="font-heading font-black text-3xl md:text-4xl text-nature-accent mb-1">$5.000.000+</div>
+                <div class="text-xs md:text-sm text-gray-300 font-medium">En Premios & Trofeos</div>
+            </div>
+            <div class="p-4">
+                <div class="font-heading font-black text-3xl md:text-4xl text-white mb-1">100%</div>
+                <div class="text-xs md:text-sm text-gray-300 font-medium">Naturaleza & Ecoturismo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- LOS RECORRIDOS (5K, 10K, 21K) -->
+    <!-- ========================================================== -->
+    <section id="recorridos" class="py-24 px-6 md:px-12 bg-nature-800 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-nature-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-nature-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Desafío a tu medida</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">LOS <span class="text-nature-400">RECORRIDOS</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    Diseñados por corredores de montaña para poner a prueba tu técnica y resistencia, rodeado de la vegetación exuberante y el río Nocaima.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- 5K Card -->
+                <div class="route-card flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section">
+                    <div>
+                        <div class="h-52 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=600"
+                                alt="Ruta 5K Nocaima Trail"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-nature-800/90 backdrop-blur-md px-3.5 py-1 rounded-full text-nature-300 font-bold text-xs uppercase border border-nature-400/30">
+                                Iniciación & Familia
+                            </div>
+                            <div class="absolute bottom-3 right-4 bg-black/70 backdrop-blur px-2.5 py-1 rounded-lg text-white font-mono text-xs">
+                                Desnivel +180m
+                            </div>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="font-heading text-4xl font-black text-white">5 KM</h3>
+                                <span class="text-nature-accent font-bold text-lg">$75.000 COP</span>
+                            </div>
+                            <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                                Ideal para principiantes, caminantes rápidos y familias. Recorrido fluido por senderos de herradura y caminos rurales con pendientes suaves.
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300 mb-6 border-t border-nature-700/60 pt-4">
+                                <li class="flex items-center gap-2"><i class="fas fa-mountain text-nature-400 w-5"></i> <span>Desnivel: <strong>+180m / -180m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-clock text-nature-400 w-5"></i> <span>Tiempo est.: <strong>40m - 1h 20m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-bottle-water text-nature-400 w-5"></i> <span>1 Puesto de hidratación (Km 2.5)</span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-shoe-prints text-nature-400 w-5"></i> <span>Terreno: 70% sendero, 30% trocha</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-7 pt-0 space-y-3">
+                        <button onclick="openRouteModal('5k')"
+                            class="w-full py-3 rounded-xl border border-nature-400/60 text-nature-100 hover:bg-nature-500 hover:border-nature-500 transition-all font-semibold text-sm flex items-center justify-center gap-2">
+                            <i class="fas fa-chart-area"></i> Ver Altimetría y Mapa
+                        </button>
+                        <button onclick="openRegistrationModal('5k')"
+                            class="w-full py-2.5 rounded-xl bg-nature-700/60 hover:bg-nature-700 text-gray-200 transition-colors font-medium text-xs">
+                            Inscribirme en 5K
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 10K Card (POPULAR) -->
+                <div class="route-card flex flex-col justify-between glass-card-accent rounded-3xl overflow-hidden border-2 border-nature-accent shadow-2xl relative transform md:-translate-y-4 fade-in-section"
+                    style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 bg-nature-accent text-nature-900 text-xs font-black px-4 py-1.5 rounded-bl-xl z-20 shadow-md">
+                        ★ MÁS POPULAR
+                    </div>
+                    <div>
+                        <div class="h-52 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1502224562085-639556652f33?auto=format&fit=crop&q=80&w=600"
+                                alt="Ruta 10K Nocaima Trail"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-nature-900/90 backdrop-blur-md px-3.5 py-1 rounded-full text-nature-accent font-bold text-xs uppercase border border-nature-accent/40">
+                                Desafío Aventura
+                            </div>
+                            <div class="absolute bottom-3 right-4 bg-black/70 backdrop-blur px-2.5 py-1 rounded-lg text-white font-mono text-xs">
+                                Desnivel +520m
+                            </div>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="font-heading text-4xl font-black text-white">10 KM</h3>
+                                <span class="text-nature-accent font-black text-xl">$95.000 COP</span>
+                            </div>
+                            <p class="text-gray-200 mb-6 text-sm leading-relaxed">
+                                Para corredores con experiencia que buscan una auténtica experiencia trail: cruce de quebradas, ascenso entre cañaduzales y miradores panorámicos.
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-200 mb-6 border-t border-nature-accent/30 pt-4">
+                                <li class="flex items-center gap-2"><i class="fas fa-mountain text-nature-accent w-5"></i> <span>Desnivel: <strong>+520m / -520m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-clock text-nature-accent w-5"></i> <span>Tiempo est.: <strong>1h 15m - 2h 30m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-bottle-water text-nature-accent w-5"></i> <span>3 Puestos de hidratación completos</span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-shoe-prints text-nature-accent w-5"></i> <span>Terreno: 85% single track, barro & roca</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-7 pt-0 space-y-3">
+                        <button onclick="openRouteModal('10k')"
+                            class="w-full py-3.5 rounded-xl bg-nature-accent hover:bg-white text-nature-900 transition-all font-bold text-sm shadow-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-chart-area"></i> Ver Altimetría y Mapa
+                        </button>
+                        <button onclick="openRegistrationModal('10k')"
+                            class="w-full py-2.5 rounded-xl bg-nature-800/80 hover:bg-nature-900 text-nature-accent transition-colors font-bold text-xs border border-nature-accent/40">
+                            Inscribirme en 10K
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 21K Card (ELITE) -->
+                <div class="route-card flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section"
+                    style="transition-delay: 200ms;">
+                    <div>
+                        <div class="h-52 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1533560904424-a0c61dc306fc?auto=format&fit=crop&q=80&w=600"
+                                alt="Ruta 21K Nocaima Trail"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-red-950/90 backdrop-blur-md px-3.5 py-1 rounded-full text-red-300 font-bold text-xs uppercase border border-red-500/40">
+                                Media Maratón Élite
+                            </div>
+                            <div class="absolute bottom-3 right-4 bg-black/70 backdrop-blur px-2.5 py-1 rounded-lg text-white font-mono text-xs">
+                                Desnivel +1.180m
+                            </div>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="font-heading text-4xl font-black text-white">21 KM</h3>
+                                <span class="text-nature-accent font-bold text-lg">$125.000 COP</span>
+                            </div>
+                            <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                                La prueba reina de alta exigencia física y mental. Ascensos prolongados por filos de montaña, bosque de niebla nativo y descensos técnicos demandantes.
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300 mb-6 border-t border-nature-700/60 pt-4">
+                                <li class="flex items-center gap-2"><i class="fas fa-mountain text-red-400 w-5"></i> <span>Desnivel: <strong>+1.180m / -1.180m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-clock text-red-400 w-5"></i> <span>Tiempo est.: <strong>2h 30m - 4h 45m</strong></span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-bottle-water text-red-400 w-5"></i> <span>5 Puestos + Alimentación sólida (geles/fruta)</span></li>
+                                <li class="flex items-center gap-2"><i class="fas fa-shield-halved text-red-400 w-5"></i> <span>Corte de carrera: 5 horas máximo</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-7 pt-0 space-y-3">
+                        <button onclick="openRouteModal('21k')"
+                            class="w-full py-3 rounded-xl border border-nature-400/60 text-nature-100 hover:bg-nature-500 hover:border-nature-500 transition-all font-semibold text-sm flex items-center justify-center gap-2">
+                            <i class="fas fa-chart-area"></i> Ver Altimetría y Mapa
+                        </button>
+                        <button onclick="openRegistrationModal('21k')"
+                            class="w-full py-2.5 rounded-xl bg-nature-700/60 hover:bg-nature-700 text-gray-200 transition-colors font-medium text-xs">
+                            Inscribirme en 21K
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- CRONOGRAMA OFICIAL DEL EVENTO (TIMELINE) -->
+    <!-- ========================================================== -->
+    <section id="cronograma" class="py-24 px-6 md:px-12 bg-nature-900 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Planifica tu fin de semana</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">CRONOGRAMA <span class="text-nature-accent">OFICIAL</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    Horarios de entrega de kits, charlas técnicas y largadas escalonadas del evento.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Sábado 14 Noviembre -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 fade-in-section">
+                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-nature-500/20">
+                        <div class="w-12 h-12 rounded-2xl bg-nature-500 flex items-center justify-center text-white text-xl">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div>
+                            <span class="text-nature-accent text-xs uppercase font-bold tracking-wider">Día 1 • Previo</span>
+                            <h3 class="font-heading font-bold text-2xl text-white">Sábado, 14 de Noviembre</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-nature-accent text-sm">10:00 AM - 06:00 PM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Entrega Oficial de Kits del Corredor</h4>
+                                <p class="text-gray-400 text-sm mt-1">Parque Principal de Nocaima. Presentar cédula de ciudadanía original y comprobante de inscripción.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-nature-accent text-sm">04:00 PM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Congresillo Técnico (Presencial & Live)</h4>
+                                <p class="text-gray-400 text-sm mt-1">Explicación del estado de los senderos, cruces de río, puntos de abastecimiento y condiciones climáticas.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-nature-accent text-sm">05:30 PM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Feria Comercial y Muestra Panelera</h4>
+                                <p class="text-gray-400 text-sm mt-1">Stands de nutrición deportiva, marcas de trail running y productos típicos paneleros de la región.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domingo 15 Noviembre -->
+                <div class="glass-card-accent rounded-3xl p-8 border border-nature-accent/40 fade-in-section" style="transition-delay: 150ms;">
+                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-nature-accent/30">
+                        <div class="w-12 h-12 rounded-2xl bg-nature-accent flex items-center justify-center text-nature-900 text-xl font-bold">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div>
+                            <span class="text-nature-accent text-xs uppercase font-bold tracking-wider">Día 2 • Carrera</span>
+                            <h3 class="font-heading font-bold text-2xl text-white">Domingo, 15 de Noviembre</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-nature-accent text-sm">05:30 AM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Apertura de Zona & Guardarropía</h4>
+                                <p class="text-gray-300 text-sm mt-1">Recepción de maletas de corredores y chequeo de material obligatorio en corral de partida.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-green-400 text-sm">06:30 AM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">🟢 Largada Oficial 21K (Élite)</h4>
+                                <p class="text-gray-300 text-sm mt-1">Salida de la media maratón de montaña. Tiempo límite de carrera: 5 horas.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-green-400 text-sm">07:15 AM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">🟢 Largada Oficial 10K (Aventura)</h4>
+                                <p class="text-gray-300 text-sm mt-1">Salida de la distancia intermedia. Tiempo límite: 3 horas.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-green-400 text-sm">08:00 AM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">🟢 Largada Oficial 5K (Iniciación)</h4>
+                                <p class="text-gray-300 text-sm mt-1">Salida de la distancia recreativa y familiar.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-20 shrink-0 font-mono font-bold text-nature-accent text-sm">11:30 AM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Ceremonia de Premiación & Cierre</h4>
+                                <p class="text-gray-300 text-sm mt-1">Subida al podio de los ganadores, entrega de trofeos, efectivo y rifas de patrocinadores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- CATEGORÍAS & PREMIACIÓN -->
+    <!-- ========================================================== -->
+    <section id="categorias" class="py-24 px-6 md:px-12 bg-nature-800 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2 fade-in-section">
+                    <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Igualdad de competencia</span>
+                    <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-6">TRES <span class="text-nature-accent">CATEGORÍAS</span></h2>
+                    <p class="text-gray-300 mb-8 text-base leading-relaxed">
+                        Categorías equitativas por rangos de edad para que compitas al máximo con corredores de tu mismo nivel. Aplican de manera independiente para <strong>Ramas Femenina y Masculina</strong> en todas las distancias competitivas.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-5 rounded-2xl bg-nature-700/40 border border-nature-500/20 hover:border-nature-500 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-nature-500 flex items-center justify-center shrink-0 text-white text-xl">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white">Categoría Libre</h4>
+                                    <span class="bg-nature-800 text-nature-300 text-xs px-2.5 py-0.5 rounded-full font-semibold">18 a 39 años</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-1">La categoría más explosiva y veloz en los senderos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-5 rounded-2xl bg-nature-700/40 border border-nature-500/20 hover:border-nature-accent transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-nature-accent flex items-center justify-center shrink-0 text-nature-900 text-xl font-bold">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white">Categoría Máster A</h4>
+                                    <span class="bg-nature-800 text-nature-accent text-xs px-2.5 py-0.5 rounded-full font-semibold">40 a 49 años</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-1">Experiencia y fondo. Donde la estrategia supera al ritmo apresurado.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-5 rounded-2xl bg-nature-700/40 border border-nature-500/20 hover:border-white transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-gray-300 flex items-center justify-center shrink-0 text-nature-900 text-xl font-bold">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white">Categoría Máster B</h4>
+                                    <span class="bg-nature-800 text-gray-300 text-xs px-2.5 py-0.5 rounded-full font-semibold">50 años en adelante</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-1">Leyendas de la montaña y homenaje a la constancia de vida en el deporte.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative fade-in-section" style="transition-delay: 150ms;">
+                    <div class="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-[0_0_40px_rgba(45,106,79,0.35)] border-2 border-nature-500/40">
+                        <img src="https://images.unsplash.com/photo-1541252876610-6c9ab86ecce8?auto=format&fit=crop&q=80&w=800"
+                            alt="Corredores cruzando meta en Nocaima Trail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nature-900 via-nature-900/30 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="bg-nature-accent text-nature-900 font-black text-xs px-3 py-1 rounded-full uppercase">Premiación Equitativa</span>
+                            <h3 class="text-2xl font-heading font-black text-white mt-2">Mismas distancias, mismos premios para Hombres y Mujeres</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PREMIACIÓN & TROFEOS -->
+    <!-- ========================================================== -->
+    <section id="premios" class="py-24 px-6 md:px-12 bg-nature-900 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Reconocimiento al esfuerzo</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">PREMIACIÓN <span class="text-nature-accent">&</span> PODIO</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    Más de <strong>$5.000.000 COP</strong> en bolsa de premios en efectivo, trofeos de autor tallados a mano y productos de patrocinadores outdoor.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Premiación 21K -->
+                <div class="glass-card-accent p-8 rounded-3xl border border-nature-accent/50 fade-in-section">
+                    <div class="w-14 h-14 rounded-2xl bg-nature-accent/20 border border-nature-accent flex items-center justify-center text-nature-accent text-2xl mb-6">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <span class="text-nature-accent font-bold text-xs uppercase tracking-wider">Máxima Competencia</span>
+                    <h3 class="font-heading font-bold text-2xl text-white mt-1 mb-4">Ruta 21K (Efectivo)</h3>
+                    <p class="text-gray-300 text-sm mb-6">
+                        Premiación económica en efectivo para los 3 primeros puestos de la Clasificación General y por categorías de edad (Masculino y Femenino).
+                    </p>
+                    <div class="space-y-3 bg-nature-800/80 p-4 rounded-2xl border border-nature-700/60 text-sm">
+                        <div class="flex justify-between items-center text-yellow-400 font-bold">
+                            <span><i class="fas fa-medal mr-2"></i> 1º Lugar General</span>
+                            <span>Efectivo + Trofeo Oro</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-300 font-semibold">
+                            <span><i class="fas fa-medal mr-2"></i> 2º Lugar General</span>
+                            <span>Efectivo + Trofeo Plata</span>
+                        </div>
+                        <div class="flex justify-between items-center text-orange-400 font-semibold">
+                            <span><i class="fas fa-medal mr-2"></i> 3º Lugar General</span>
+                            <span>Efectivo + Trofeo Bronce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premiación 10K & 5K -->
+                <div class="glass-card p-8 rounded-3xl border border-nature-500/30 fade-in-section" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-nature-500/20 border border-nature-500 flex items-center justify-center text-nature-300 text-2xl mb-6">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span class="text-nature-300 font-bold text-xs uppercase tracking-wider">Trofeos & Patrocinadores</span>
+                    <h3 class="font-heading font-bold text-2xl text-white mt-1 mb-4">Rutas 10K y 5K</h3>
+                    <p class="text-gray-300 text-sm mb-6">
+                        Trofeos conmemorativos grabados para el podio (1º, 2º y 3º puesto M/F) y obsequios especiales de marcas de calzado, indumentaria y nutrición deportiva.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-nature-accent"></i> Trofeo oficial para top 3 en cada categoría</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-nature-accent"></i> Kits deportivos de marcas aliadas</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-nature-accent"></i> Diplomas de honor al rendimiento</li>
+                    </ul>
+                </div>
+
+                <!-- Medalla Finisher -->
+                <div class="glass-card p-8 rounded-3xl border border-nature-500/30 fade-in-section" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-nature-accent/20 border border-nature-accent flex items-center justify-center text-nature-accent text-2xl mb-6">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <span class="text-nature-accent font-bold text-xs uppercase tracking-wider">Para Todos los Atletas</span>
+                    <h3 class="font-heading font-bold text-2xl text-white mt-1 mb-4">Medalla Finisher</h3>
+                    <p class="text-gray-300 text-sm mb-6">
+                        Cada participante que cruce la meta dentro del tiempo reglamentario recibirá la medalla oficial metálica con relieve en 3D de las montañas de Nocaima y cinta grabada.
+                    </p>
+                    <div class="bg-nature-800/80 p-4 rounded-2xl border border-nature-700/60 flex items-center gap-3">
+                        <i class="fas fa-heart-pulse text-nature-accent text-xl"></i>
+                        <span class="text-xs text-gray-300">Símbolo de tu victoria sobre el barro, la fatiga y el desnivel.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TARIFAS & KIT DEL CORREDOR (INSCRIPCIÓN) -->
+    <!-- ========================================================== -->
+    <section id="inscripcion" class="py-24 px-6 md:px-12 bg-nature-800 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Cupos Limitados</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">TARIFAS <span class="text-nature-accent">&</span> KIT OFICIAL</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    Asegura tu cupo en la primera etapa con tarifa preferencial de Preventa.
+                </p>
+            </div>
+
+            <!-- Fases de Precio -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Card Tarifa 5K -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 flex flex-col justify-between fade-in-section">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-nature-300 bg-nature-700/60 px-3 py-1 rounded-full">Distancia 5K</span>
+                            <span class="text-xs text-green-400 font-semibold"><i class="fas fa-tag mr-1"></i> Fase Preventa</span>
+                        </div>
+                        <h3 class="font-heading text-3xl font-black text-white mb-2">5 KM Trail</h3>
+                        <p class="text-gray-400 text-sm mb-6">Perfecto para iniciarse en la montaña con amigos o familia.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-heading font-black text-nature-accent">$75.000</span>
+                            <span class="text-gray-400 text-sm">COP</span>
+                            <div class="text-xs text-gray-500 mt-1 line-through">Precio regular: $90.000 COP</div>
+                        </div>
+                    </div>
+                    <button onclick="openRegistrationModal('5k')"
+                        class="w-full py-3.5 rounded-xl border border-nature-accent text-nature-accent hover:bg-nature-accent hover:text-nature-900 font-bold transition-all text-sm">
+                        Inscribirme en 5K
+                    </button>
+                </div>
+
+                <!-- Card Tarifa 10K (Destacada) -->
+                <div class="glass-card-accent rounded-3xl p-8 border-2 border-nature-accent shadow-2xl flex flex-col justify-between relative transform md:-translate-y-2 fade-in-section"
+                    style="transition-delay: 100ms;">
+                    <div class="absolute -top-3 right-6 bg-nature-accent text-nature-900 font-black text-xs px-3 py-1 rounded-full uppercase shadow">
+                        Más Elegida
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-nature-accent bg-nature-800 px-3 py-1 rounded-full border border-nature-accent/30">Distancia 10K</span>
+                            <span class="text-xs text-green-400 font-semibold"><i class="fas fa-tag mr-1"></i> Fase Preventa</span>
+                        </div>
+                        <h3 class="font-heading text-3xl font-black text-white mb-2">10 KM Trail</h3>
+                        <p class="text-gray-300 text-sm mb-6">El balance perfecto entre exigencia técnica y velocidad.</p>
+                        <div class="mb-6">
+                            <span class="text-5xl font-heading font-black text-white">$95.000</span>
+                            <span class="text-gray-300 text-sm">COP</span>
+                            <div class="text-xs text-gray-400 mt-1 line-through">Precio regular: $115.000 COP</div>
+                        </div>
+                    </div>
+                    <button onclick="openRegistrationModal('10k')"
+                        class="w-full py-4 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-black transition-all text-base shadow-lg">
+                        Inscribirme en 10K
+                    </button>
+                </div>
+
+                <!-- Card Tarifa 21K -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 flex flex-col justify-between fade-in-section"
+                    style="transition-delay: 200ms;">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-red-300 bg-red-950/60 px-3 py-1 rounded-full">Distancia 21K</span>
+                            <span class="text-xs text-green-400 font-semibold"><i class="fas fa-tag mr-1"></i> Fase Preventa</span>
+                        </div>
+                        <h3 class="font-heading text-3xl font-black text-white mb-2">21 KM Élite</h3>
+                        <p class="text-gray-400 text-sm mb-6">Para atletas consagrados listos para ascensos brutales.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-heading font-black text-nature-accent">$125.000</span>
+                            <span class="text-gray-400 text-sm">COP</span>
+                            <div class="text-xs text-gray-500 mt-1 line-through">Precio regular: $145.000 COP</div>
+                        </div>
+                    </div>
+                    <button onclick="openRegistrationModal('21k')"
+                        class="w-full py-3.5 rounded-xl border border-nature-accent text-nature-accent hover:bg-nature-accent hover:text-nature-900 font-bold transition-all text-sm">
+                        Inscribirme en 21K
+                    </button>
+                </div>
+            </div>
+
+            <!-- ¿Qué incluye tu inscripción? (El Kit del Corredor) -->
+            <div class="glass-card rounded-3xl p-8 md:p-12 border border-nature-500/30 fade-in-section">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 pb-6 border-b border-nature-500/20">
+                    <div>
+                        <span class="text-nature-accent font-bold text-xs uppercase tracking-wider">Paquete Completo</span>
+                        <h3 class="font-heading font-black text-2xl md:text-3xl text-white mt-1">¿Qué incluye tu Inscripción?</h3>
+                    </div>
+                    <button onclick="openRegistrationModal()"
+                        class="bg-nature-accent hover:bg-white text-nature-900 font-bold py-3 px-8 rounded-xl transition-all shadow-md text-sm">
+                        Registrarme Ahora
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-shirt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Camiseta Técnica Oficial</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Tejido Dry-Fit de secado ultra rápido, diseño conmemorativo exclusivo.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Número & Chip Electrónico</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Dorsal personalizado y chip de cronometraje para tiempo neto exacto.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Medalla Finisher</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Medalla metálica troquelada exclusiva al cruzar la línea de meta.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-kit-medical"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Póliza de Seguro Médico</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Cobertura de accidentes durante la competencia y cuerpo de socorro en ruta.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-apple-whole"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Hidratación & Nutrición</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Agua, electrolitos, fruta fresca y la tradicional panela nocaimera en ruta y meta.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-nature-800/60 border border-nature-700/50">
+                        <div class="w-10 h-10 rounded-xl bg-nature-500/30 flex items-center justify-center text-nature-accent shrink-0 text-lg">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Fotografías Digitales Gratis</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Descarga tus fotos en alta resolución en meta y los puntos más icónicos del sendero.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- MATERIAL OBLIGATORIO & SEGURIDAD -->
+    <!-- ========================================================== -->
+    <section id="seguridad" class="py-24 px-6 md:px-12 bg-nature-900 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Compromiso y Cuidado</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">MATERIAL <span class="text-red-400">OBLIGATORIO</span> & SEGURIDAD</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    La montaña exige respeto y preparación. Por tu seguridad y la de todos, el siguiente equipo es obligatorio para tomar la partida.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Obligatorio -->
+                <div class="glass-card rounded-3xl p-8 border border-red-500/30 fade-in-section">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-red-500/20">
+                        <i class="fas fa-triangle-exclamation text-red-400 text-2xl"></i>
+                        <h3 class="font-heading font-bold text-2xl text-white">Equipo Obligatorio (Revisión en Corral)</h3>
+                    </div>
+
+                    <ul class="space-y-4 text-sm text-gray-200">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-bottle-water text-red-400 mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Sistema de hidratación propio (Mínimo 500ml):</strong>
+                                <span class="text-gray-400 block text-xs">Canguro, chaleco o botilito de mano. <em>Evento eco-sostenible: No se entregarán vasos desechables en los puestos de hidratación.</em></span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-bullhorn text-red-400 mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Silbato de emergencia:</strong>
+                                <span class="text-gray-400 block text-xs">Para emitir señales sonoras en caso de extravío o accidente en el bosque.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-mobile-screen-button text-red-400 mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Teléfono móvil con batería al 100%:</strong>
+                                <span class="text-gray-400 block text-xs">Con los números de socorro del evento grabados previamente.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-id-badge text-red-400 mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Dorsal de competencia en el pecho:</strong>
+                                <span class="text-gray-400 block text-xs">Visible durante toda la carrera para control en los puestos de paso y cronometraje.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-sheet-plastic text-red-400 mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Manta térmica reflectiva (Exclusivo 21K):</strong>
+                                <span class="text-gray-400 block text-xs">Elemento indispensable en caso de hipotermia o lluvia prolongada en cumbres altas.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recomendado -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-accent/30 fade-in-section" style="transition-delay: 150ms;">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-nature-accent/20">
+                        <i class="fas fa-lightbulb text-nature-accent text-2xl"></i>
+                        <h3 class="font-heading font-bold text-2xl text-white">Equipo Altamente Recomendado</h3>
+                    </div>
+
+                    <ul class="space-y-4 text-sm text-gray-200">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-shoe-prints text-nature-accent mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Zapatillas específicas de Trail Running:</strong>
+                                <span class="text-gray-400 block text-xs">Con taqueado pronunciado para agarre en barro, roca mojada y raíces resbalosas.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-sun text-nature-accent mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Protección solar & Visera:</strong>
+                                <span class="text-gray-400 block text-xs">El clima de Nocaima oscila en 24°C con tramos expuestos al sol de montaña.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-person-hiking text-nature-accent mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Bastones de Trail (Opcional):</strong>
+                                <span class="text-gray-400 block text-xs">Permitidos para 10K y 21K, siempre con protectores de punta y utilizados con cuidado.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-shirt text-nature-accent mt-1 shrink-0"></i>
+                            <div>
+                                <strong>Ropa de cambio seca para la meta:</strong>
+                                <span class="text-gray-400 block text-xs">Puedes dejar tu maletín en la guardarropía oficial sin costo adicional.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- DESTINO NOCAIMA - CÓMO LLEGAR & TURISMO -->
+    <!-- ========================================================== -->
+    <section id="destino" class="py-24 px-6 md:px-12 bg-nature-800 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Paraíso Natural de Cundinamarca</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">DESCUBRE <span class="text-nature-400">NOCAIMA</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                    Conocida como la <em>Capital Panelera de Colombia</em>, Nocaima ofrece una mezcla incomparable de cañones verdes, cascadas imponentes y calidez de su gente.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cómo llegar -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 fade-in-section">
+                    <div class="w-12 h-12 rounded-2xl bg-nature-500/30 flex items-center justify-center text-nature-accent text-xl mb-6">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">¿Cómo llegar desde Bogotá?</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Toma la salida por la <strong>Calle 80</strong> hacia La Vega - Nocaima. La carretera es de doble calzada casi en su totalidad (aprox. 68 km, 1 hora y 45 minutos en auto).
+                    </p>
+                    <div class="text-xs text-gray-400 bg-nature-900/60 p-3.5 rounded-xl border border-nature-700/50">
+                        <i class="fas fa-bus text-nature-accent mr-1"></i> <strong>Transporte Público:</strong> Flota Santa Fe o Rápido Tolima desde el Portal 80 o Terminal Salitre directo a Nocaima.
+                    </div>
+                </div>
+
+                <!-- Hospedaje & Gastronomía -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 fade-in-section" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-nature-500/30 flex items-center justify-center text-nature-accent text-xl mb-6">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Hospedaje & Fincas</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Nocaima cuenta con una amplia oferta de <strong>Glampings ecológicos, hoteles boutique coloniales</strong> y fincas agroturísticas. Te recomendamos reservar con anticipación debido a la alta demanda del evento.
+                    </p>
+                    <div class="text-xs text-gray-400 bg-nature-900/60 p-3.5 rounded-xl border border-nature-700/50">
+                        <i class="fas fa-mug-hot text-nature-accent mr-1"></i> <strong>Gastronomía local:</strong> No te vayas sin probar el guarapo de caña fresco, los melados de panela y el sancocho de gallina criolla.
+                    </div>
+                </div>
+
+                <!-- Ecoturismo & Cascadas -->
+                <div class="glass-card rounded-3xl p-8 border border-nature-500/30 fade-in-section" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-nature-500/30 flex items-center justify-center text-nature-accent text-xl mb-6">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Cascadas y Aventura</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Aprovecha el fin de semana para visitar atractivos como las <strong>Cascadas de Barandillas</strong>, practicar torrentismo, caminatas nocturnas y conocer los trapiches molienderos tradicionales.
+                    </p>
+                    <div class="text-xs text-gray-400 bg-nature-900/60 p-3.5 rounded-xl border border-nature-700/50">
+                        <i class="fas fa-leaf text-nature-accent mr-1"></i> <strong>Clima:</strong> Cálido y agradable (promedio 24°C), con brisa fresca de montaña en las tardes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PREGUNTAS FRECUENTES (FAQ ACCORDION) -->
+    <!-- ========================================================== -->
+    <section id="faq" class="py-24 px-6 md:px-12 bg-nature-900 border-t border-nature-500/20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-nature-accent font-bold text-xs uppercase tracking-widest block mb-2">Dudas habituales</span>
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-white mb-4">PREGUNTAS <span class="text-nature-accent">FRECUENTES</span></h2>
+                <p class="text-gray-400 text-base">
+                    Todo lo que necesitas tener claro antes de presentarte en la línea de partida.
+                </p>
+            </div>
+
+            <div class="space-y-4 fade-in-section">
+                <!-- FAQ 1 -->
+                <div class="glass-card rounded-2xl border border-nature-500/30 overflow-hidden">
+                    <button class="w-full p-5 text-left flex justify-between items-center text-white font-bold text-base hover:text-nature-accent transition-colors focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <span>¿Puedo reclamar mi kit el mismo día de la carrera?</span>
+                        <i class="fas fa-chevron-down text-nature-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-5 pb-5 text-sm text-gray-300 leading-relaxed">
+                        Recomendamos enfáticamente retirar el kit el <strong>sábado 14 de noviembre</strong> de 10:00 AM a 6:00 PM en el Parque Principal. Únicamente para corredores que viajen el mismo domingo desde fuera de la provincia habrá un módulo exprés de 5:00 AM a 6:00 AM, previa solicitud al correo de la organización.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="glass-card rounded-2xl border border-nature-500/30 overflow-hidden">
+                    <button class="w-full p-5 text-left flex justify-between items-center text-white font-bold text-base hover:text-nature-accent transition-colors focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <span>¿Qué sucede si llueve el día del evento?</span>
+                        <i class="fas fa-chevron-down text-nature-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-5 pb-5 text-sm text-gray-300 leading-relaxed">
+                        El trail running es un deporte de naturaleza y la carrera <strong>no se cancela por lluvia habitual</strong>. El barro y el agua son parte de la aventura. Solo en caso de tormenta eléctrica severa o crecida desbordada de cauces que ponga en riesgo inminente la integridad, el comité de seguridad activará rutas alternas de contingencia.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="glass-card rounded-2xl border border-nature-500/30 overflow-hidden">
+                    <button class="w-full p-5 text-left flex justify-between items-center text-white font-bold text-base hover:text-nature-accent transition-colors focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <span>¿Se puede ceder o transferir el cupo a otra persona?</span>
+                        <i class="fas fa-chevron-down text-nature-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-5 pb-5 text-sm text-gray-300 leading-relaxed">
+                        Sí, se permiten traspasos de cupo hasta el <strong>31 de octubre de 2026</strong> sin costo adicional enviando un correo a <em>inscripciones@nocaimatrail.com</em> con los datos del nuevo titular. Por temas de seguros médicos y chips de cronometraje, no se admiten traspasos fuera de esta fecha.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="glass-card rounded-2xl border border-nature-500/30 overflow-hidden">
+                    <button class="w-full p-5 text-left flex justify-between items-center text-white font-bold text-base hover:text-nature-accent transition-colors focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <span>¿Habrá guardarropía y baños en la zona de partida?</span>
+                        <i class="fas fa-chevron-down text-nature-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-5 pb-5 text-sm text-gray-300 leading-relaxed">
+                        Sí, dispondremos de carpas de guardarropa gratuitas custodiadas por el equipo de logística. Tu mochila se identificará con el número de tu dorsal. Además habrá baterías de baños portátiles y servicio de primeros auxilios con ambulancias medicalizadas.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="glass-card rounded-2xl border border-nature-500/30 overflow-hidden">
+                    <button class="w-full p-5 text-left flex justify-between items-center text-white font-bold text-base hover:text-nature-accent transition-colors focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <span>¿Puedo participar con mi perro (modalidad canicross)?</span>
+                        <i class="fas fa-chevron-down text-nature-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-5 pb-5 text-sm text-gray-300 leading-relaxed">
+                        La modalidad pet-friendly está autorizada <strong>únicamente en la distancia de 5K</strong>. El perro debe llevar arnés adecuado, correa durante todo el trayecto y su respectivo hidratante portátil. No está permitido correr con mascotas en 10K ni 21K por pasos estrechos y zonas escarpadas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SPONSORS & INSTITUTIONAL ALLIES -->
+    <!-- ========================================================== -->
+    <section class="py-16 px-6 bg-nature-800 border-t border-nature-500/20">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-gray-400 font-semibold text-xs uppercase tracking-widest block mb-8">Aliados e Instituciones que hacen posible esta aventura</span>
+            <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+                <div class="flex items-center gap-2 text-gray-300 font-heading font-black text-xl">
+                    <i class="fas fa-landmark text-nature-accent text-2xl"></i> ALCALDÍA DE NOCAIMA
+                </div>
+                <div class="flex items-center gap-2 text-gray-300 font-heading font-bold text-xl">
+                    <i class="fas fa-cross text-red-500 text-2xl"></i> DEFENSA CIVIL
+                </div>
+                <div class="flex items-center gap-2 text-gray-300 font-heading font-black text-xl">
+                    <i class="fas fa-bolt text-nature-accent text-2xl"></i> ENERGIX TRAIL
+                </div>
+                <div class="flex items-center gap-2 text-gray-300 font-heading font-bold text-xl">
+                    <i class="fas fa-mountain-sun text-nature-300 text-2xl"></i> FEDEPANELA
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================================== -->
+    <footer class="bg-nature-900 border-t border-nature-500/20 pt-16 pb-8 px-6 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <a href="#" class="flex items-center gap-2 font-heading font-black text-2xl tracking-tighter text-white inline-block mb-4">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-nature-500 to-nature-accent flex items-center justify-center text-nature-900 text-sm">
+                        <i class="fas fa-mountain"></i>
+                    </span>
+                    <span>NOCAIMA<span class="text-nature-accent">TRAIL</span></span>
+                </a>
+                <p class="text-gray-400 max-w-sm mx-auto md:mx-0 text-sm leading-relaxed mb-6">
+                    Vive la auténtica experiencia del trail running colombiano. Pasión, esfuerzo y respeto por la naturaleza en los senderos más hermosos de Cundinamarca.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-3">
+                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"
+                        class="w-10 h-10 rounded-full bg-nature-800 border border-nature-500/30 flex items-center justify-center text-white hover:bg-nature-accent hover:text-nature-900 hover:border-nature-accent transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"
+                        class="w-10 h-10 rounded-full bg-nature-800 border border-nature-500/30 flex items-center justify-center text-white hover:bg-nature-accent hover:text-nature-900 hover:border-nature-accent transition-all">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://strava.com" target="_blank" rel="noopener" aria-label="Strava"
+                        class="w-10 h-10 rounded-full bg-nature-800 border border-nature-500/30 flex items-center justify-center text-white hover:bg-nature-accent hover:text-nature-900 hover:border-nature-accent transition-all">
+                        <i class="fab fa-strava"></i>
+                    </a>
+                    <a href="https://wa.me/573001234567?text=Hola,%20tengo%20preguntas%20sobre%20Nocaima%20Trail%202026" target="_blank" rel="noopener" aria-label="WhatsApp"
+                        class="w-10 h-10 rounded-full bg-nature-800 border border-nature-500/30 flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-nature-900 hover:border-green-400 transition-all">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 text-base">Portales & Servicios</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li>
+                        <a href="consulta.html" class="text-nature-accent hover:text-white font-semibold transition-colors flex items-center justify-center md:justify-start gap-1.5">
+                            <i class="fas fa-search text-xs"></i> Consultar Atleta (Dorsal & QR)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="terminos.html" class="hover:text-nature-accent transition-colors flex items-center justify-center md:justify-start gap-1.5">
+                            <i class="fas fa-file-contract text-xs text-nature-accent"></i> Términos & Reglamento Oficial
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin/index.html" class="text-amber-300 hover:text-white font-medium transition-colors flex items-center justify-center md:justify-start gap-1.5">
+                            <i class="fas fa-lock text-xs text-amber-400"></i> Panel Organizador (Admin)
+                        </a>
+                    </li>
+                    <li class="pt-1.5"><a href="#recorridos" class="hover:text-nature-accent transition-colors">Recorridos (5K, 10K, 21K)</a></li>
+                    <li><a href="#cronograma" class="hover:text-nature-accent transition-colors">Cronograma Oficial</a></li>
+                    <li><a href="#inscripcion" class="hover:text-nature-accent transition-colors">Tarifas y Kit</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 text-base">Contacto & Organización</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-envelope text-nature-accent"></i>
+                        <span>info@nocaimatrail.com</span>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-phone text-nature-accent"></i>
+                        <span>+57 300 123 4567</span>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-map-marker-alt text-nature-accent"></i>
+                        <span>Parque Principal, Nocaima, Cundinamarca</span>
+                    </li>
+                    <li class="pt-2">
+                        <span class="inline-block px-3 py-1 bg-nature-800 rounded-lg text-xs text-nature-300 border border-nature-700/50">
+                            Avalado por la Liga de Atletismo
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-nature-800 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+            <div>
+                &copy; 2026 Maratón Nocaima Trail. Todos los derechos reservados.
+            </div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="consulta.html" class="text-nature-accent hover:underline flex items-center gap-1"><i class="fas fa-search text-[10px]"></i> Consultar Inscripción</a>
+                <a href="terminos.html" class="hover:text-gray-300 flex items-center gap-1"><i class="fas fa-file-contract text-[10px]"></i> Términos & Reglamento</a>
+                <a href="admin/index.html" class="text-amber-300/80 hover:text-amber-300 flex items-center gap-1"><i class="fas fa-lock text-[10px]"></i> Panel Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================== -->
+    <!-- MODAL: DETALLES DE RUTA Y ALTIMETRÍA -->
+    <!-- ========================================================== -->
+    <div id="route-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
+        <div class="modal-box bg-nature-800 border border-nature-500/40 rounded-3xl max-w-3xl w-full max-h-[92dvh] sm:max-h-[90vh] overflow-y-auto shadow-2xl p-5 sm:p-7 md:p-8 relative">
+            <button onclick="closeRouteModal()" aria-label="Cerrar modal de ruta" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-white text-xl w-11 h-11 rounded-full bg-nature-700/70 hover:bg-nature-700 flex items-center justify-center transition-colors min-w-[44px] min-h-[44px] z-10">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Route Modal Header -->
+            <div class="flex items-center gap-3 mb-4">
+                <span id="route-modal-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-nature-500 text-white">10K Aventura</span>
+                <span class="text-xs text-gray-400">Altimetría & Hoja de Ruta</span>
+            </div>
+            <h3 id="route-modal-title" class="font-heading font-black text-3xl text-white mb-6">Ruta 10 KM Nocaima Trail</h3>
+
+            <!-- Route Quick Metrics Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div class="bg-nature-900/80 p-3.5 rounded-2xl border border-nature-700/60 text-center">
+                    <span class="text-xs text-gray-400 block mb-1">Distancia Real</span>
+                    <span id="route-modal-dist" class="font-heading font-black text-xl text-white">10.4 km</span>
+                </div>
+                <div class="bg-nature-900/80 p-3.5 rounded-2xl border border-nature-700/60 text-center">
+                    <span class="text-xs text-gray-400 block mb-1">Desnivel (+)</span>
+                    <span id="route-modal-desnivel" class="font-heading font-black text-xl text-nature-accent">+520m</span>
+                </div>
+                <div class="bg-nature-900/80 p-3.5 rounded-2xl border border-nature-700/60 text-center">
+                    <span class="text-xs text-gray-400 block mb-1">Altitud Máxima</span>
+                    <span id="route-modal-maxalt" class="font-heading font-black text-xl text-white">1.480 msnm</span>
+                </div>
+                <div class="bg-nature-900/80 p-3.5 rounded-2xl border border-nature-700/60 text-center">
+                    <span class="text-xs text-gray-400 block mb-1">Corte Máximo</span>
+                    <span id="route-modal-corte" class="font-heading font-black text-xl text-red-400">3h 00m</span>
+                </div>
+            </div>
+
+            <!-- Gráfico SVG Interactivo de Altimetría -->
+            <div class="bg-nature-900/90 p-5 rounded-2xl border border-nature-500/30 mb-6">
+                <div class="flex justify-between items-center text-xs text-gray-400 mb-2">
+                    <span><i class="fas fa-chart-line text-nature-accent mr-1"></i> Perfil Altimétrico (Elevación vs Distancia)</span>
+                    <span id="route-modal-terrain" class="text-nature-300">85% Sendero Técnico • 15% Rural</span>
+                </div>
+                <!-- SVG Dinámico -->
+                <div class="relative w-full h-44 overflow-hidden" id="route-svg-container">
+                    <svg viewBox="0 0 600 160" class="w-full h-full" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="elevationGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d4a373" stop-opacity="0.8" />
+                                <stop offset="70%" stop-color="#2d6a4f" stop-opacity="0.4" />
+                                <stop offset="100%" stop-color="#081c15" stop-opacity="0.05" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Guías de altura -->
+                        <line x1="0" y1="30" x2="600" y2="30" stroke="#1b4332" stroke-dasharray="4" />
+                        <line x1="0" y1="80" x2="600" y2="80" stroke="#1b4332" stroke-dasharray="4" />
+                        <line x1="0" y1="130" x2="600" y2="130" stroke="#1b4332" stroke-dasharray="4" />
+                        <!-- Curva del perfil -->
+                        <path id="route-svg-path" d="M 0 130 Q 80 120 150 70 T 300 35 T 450 90 T 600 130 L 600 160 L 0 160 Z" fill="url(#elevationGrad)" />
+                        <path id="route-svg-stroke" d="M 0 130 Q 80 120 150 70 T 300 35 T 450 90 T 600 130" fill="none" stroke="#d4a373" stroke-width="3" />
+                        <!-- Puntos de hidratación -->
+                        <circle cx="150" cy="70" r="5" fill="#52b788" stroke="#ffffff" stroke-width="2" />
+                        <circle cx="300" cy="35" r="5" fill="#52b788" stroke="#ffffff" stroke-width="2" />
+                        <circle cx="450" cy="90" r="5" fill="#52b788" stroke="#ffffff" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="flex justify-between text-[11px] text-gray-500 mt-2 font-mono">
+                    <span>Km 0 (Salida - 1.100m)</span>
+                    <span class="text-nature-accent">🟢 Puntos Verdes = Hidratación</span>
+                    <span id="route-modal-endkm">Km 10 (Meta - 1.100m)</span>
+                </div>
+            </div>
+
+            <!-- Descripción Detallada del Sendero -->
+            <div class="mb-6">
+                <h4 class="font-bold text-white text-base mb-2">Descripción del Terreno & Hitos</h4>
+                <p id="route-modal-desc" class="text-sm text-gray-300 leading-relaxed">
+                    La ruta inicia en el casco histórico de Nocaima, descendiendo hacia el valle del río con un primer cruce de quebrada. A partir del km 3 inicia un ascenso sostenido por senderos de herradura y cañaduzales, pasando por la quebrada El Chupadero con vistas a la cordillera.
+                </p>
+            </div>
+
+            <!-- Botones de Acción Modal -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="downloadGpxSimulation()" class="flex-1 py-3 rounded-xl bg-nature-700 hover:bg-nature-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-download text-nature-accent"></i> Descargar Track GPX (Reloj/GPS)
+                </button>
+                <button id="route-modal-register-btn" onclick="openRegistrationModalFromRoute()" class="flex-1 py-3 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-bold text-sm transition-colors shadow-lg">
+                    Inscribirme en esta Distancia
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- MODAL: REGISTRO / PRE-INSCRIPCIÓN INTERACTIVO -->
+    <!-- ========================================================== -->
+    <div id="registration-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
+        <div class="modal-box bg-nature-800 border border-nature-accent/50 rounded-3xl max-w-2xl w-full max-h-[92dvh] sm:max-h-[90vh] overflow-y-auto shadow-2xl p-4 sm:p-6 md:p-8 relative">
+            <button onclick="closeRegistrationModal()" aria-label="Cerrar modal de inscripción" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-white text-xl w-11 h-11 rounded-full bg-nature-700/70 hover:bg-nature-700 flex items-center justify-center transition-colors min-w-[44px] min-h-[44px] z-10">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <form id="reg-form" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
+                <!-- ====================================================== -->
+                <!-- ETAPA 1: REGLAMENTO OFICIAL DE CARRERA (DE PRIMERAS) -->
+                <!-- ====================================================== -->
+                <div id="modal-step-reglamento" class="space-y-4">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="w-3 h-3 rounded-full bg-nature-accent animate-pulse"></span>
+                        <span class="text-xs uppercase font-bold tracking-widest text-nature-accent">Paso 1 de 2 • Normativa Oficial Obligatoria</span>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-black text-2xl sm:text-3xl text-white mb-1">Reglamento Oficial de Carrera</h3>
+                        <p class="text-gray-300 text-xs sm:text-sm">Por tu seguridad y el cuidado de los senderos de Nocaima, debes leer y aceptar la reglamentación antes de ingresar tus datos personales.</p>
+                    </div>
+
+                    <!-- Mensaje de Error si no acepta términos -->
+                    <div id="reglamento-error-box" class="hidden p-3.5 bg-red-950/90 border border-red-500/80 rounded-2xl text-red-200 text-xs flex items-center gap-2.5 shadow-lg">
+                        <i class="fas fa-exclamation-triangle text-amber-400 text-base flex-shrink-0"></i>
+                        <span>Debes marcar ambas casillas para aceptar el reglamento y la política de datos antes de continuar.</span>
+                    </div>
+
+                    <!-- Contenedor con Scroll de las Reglas Oficiales -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-nature-900/90 border-2 border-nature-accent/60 shadow-xl space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-nature-700/60">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 rounded-lg bg-nature-accent/20 border border-nature-accent text-nature-accent flex items-center justify-center text-sm">
+                                    <i class="fas fa-book-open"></i>
+                                </span>
+                                <div>
+                                    <h4 class="font-heading font-black text-sm sm:text-base text-white leading-tight">Normativa Maratón Nocaima Trail 2026</h4>
+                                    <span class="text-[11px] text-gray-400">15 de Noviembre, 2026 • Nocaima, Cundinamarca</span>
+                                </div>
+                            </div>
+                            <button type="button" onclick="abrirVisorLegalCompleto()" class="text-[11px] text-nature-accent hover:text-white underline flex items-center gap-1 font-semibold transition-colors">
+                                <span>Ver documento legal</span> <i class="fas fa-file-contract text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Artículos del Reglamento -->
+                        <div class="max-h-60 sm:max-h-64 overflow-y-auto pr-2 space-y-2.5 text-xs text-gray-300 border border-nature-700/50 rounded-xl p-3 bg-nature-950/80 leading-relaxed">
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-leaf text-nature-accent mr-1"></i> 1. Principio Ambiental Estricto (Cero Basuras):</span>
+                                <p>Prohibido arrojar envoltorios, geles, botellas o cualquier residuo en el sendero. Quien arroje basura será <strong>descalificado inmediatamente</strong>. Nocaima es reserva hídrica y ecológica.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-tint text-nature-accent mr-1"></i> 2. Auto-suficiencia Hídrica & Material Obligatorio:</span>
+                                <p>No se entregarán vasos plásticos desechables en los puestos de abastecimiento. Cada participante debe portar su propia botella blanda (soft flask) o vaso reutilizable y el kit de seguridad reglamentario.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-clock text-nature-accent mr-1"></i> 3. Tiempos de Corte & Seguridad del Atleta:</span>
+                                <p>Por seguridad física de los atletas y de los cuerpos de rescate (Defensa Civil y Bomberos), los jueces retirarán de competencia a quienes no alcancen los puestos de corte antes del tiempo límite.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-heartbeat text-nature-accent mr-1"></i> 4. Aptitud Física & Auxilio Deportivo:</span>
+                                <p>El corredor declara contar con la preparación física adecuada y estar médicamente apto/a, con la obligación ética y deportiva de auxiliar a cualquier compañero en situación de peligro o accidente.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-child text-nature-accent mr-1"></i> 5. Menores de Edad (Exclusivo 5K):</span>
+                                <p>Los menores de edad únicamente podrán competir en la distancia 5K y requieren autorización expresa firmada y datos completos del acudiente responsable.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-nature-900/80 border border-nature-700/40">
+                                <span class="text-nature-accent font-bold block mb-0.5"><i class="fas fa-shield-alt text-nature-accent mr-1"></i> 6. Protección de Datos (Habeas Data Ley 1581 de 2012):</span>
+                                <p>Tus datos personales están protegidos conforme a la ley colombiana para fines exclusivos de asignación de dorsal, seguro médico de carrera y cronometraje oficial.</p>
+                            </div>
+                        </div>
+
+                        <!-- Casillas de Aceptación Obligatoria -->
+                        <div class="space-y-2 pt-2 border-t border-nature-700/60 text-xs">
+                            <label class="flex items-start gap-2.5 cursor-pointer text-gray-200 hover:text-white p-2 rounded-xl bg-nature-950/40 hover:bg-nature-800/60 border border-transparent hover:border-nature-600/40 transition-colors">
+                                <input type="checkbox" id="reg-acepta-reglamento" onchange="verificarAceptacionTerminos()" class="mt-0.5 rounded text-nature-accent focus:ring-0 w-4 h-4 cursor-pointer accent-amber-600 flex-shrink-0">
+                                <span class="leading-snug">He leído, comprendo y <strong class="text-nature-accent">acepto el Reglamento Oficial de Carrera</strong> y declaro estar médicamente apto/a. *</span>
+                            </label>
+                            <label class="flex items-start gap-2.5 cursor-pointer text-gray-200 hover:text-white p-2 rounded-xl bg-nature-950/40 hover:bg-nature-800/60 border border-transparent hover:border-nature-600/40 transition-colors">
+                                <input type="checkbox" id="reg-acepta-datos" onchange="verificarAceptacionTerminos()" class="mt-0.5 rounded text-nature-accent focus:ring-0 w-4 h-4 cursor-pointer accent-amber-600 flex-shrink-0">
+                                <span class="leading-snug">Autorizo el tratamiento de mis datos personales según la <strong class="text-nature-accent">Ley 1581 de 2012 (Habeas Data)</strong>. *</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Botón para avanzar a llenar datos -->
+                    <div class="pt-2">
+                        <button type="button" id="btn-avanzar-datos" onclick="avanzarAFormularioDatos()"
+                            class="w-full bg-nature-accent hover:bg-white text-nature-900 font-black py-4 px-6 rounded-xl transition-all shadow-[0_4px_25px_rgba(212,163,115,0.4)] text-base flex items-center justify-center gap-2 transform active:scale-95">
+                            <span>Aceptar Términos y Llenar mis Datos</span>
+                            <i class="fas fa-arrow-right text-base"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ====================================================== -->
+                <!-- ETAPA 2: FORMULARIO DE DATOS & PAGO (HAY SI SALEN) -->
+                <!-- ====================================================== -->
+                <div id="modal-step-datos" class="hidden space-y-4">
+                    <div class="flex items-center justify-between pb-1">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+                            <span class="text-xs uppercase font-bold tracking-widest text-nature-accent">Paso 2 de 2 • Tus Datos & Pasarela Wompi</span>
+                        </div>
+                        <button type="button" onclick="regresarAReglamento()" class="text-xs text-nature-accent hover:text-white underline flex items-center gap-1 font-semibold transition-colors">
+                            <i class="fas fa-arrow-left text-[10px]"></i> Ver Reglamento
+                        </button>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading font-black text-2xl sm:text-3xl text-white mb-1">Inscripción Oficial Nocaima Trail 2026</h3>
+                        <p class="text-gray-300 text-xs sm:text-sm">Ingresa tus datos personales para asignación de dorsal y pago seguro en línea con Wompi Bancolombia.</p>
+                    </div>
+
+                    <!-- Badge de Términos Aceptados -->
+                    <div class="p-2.5 rounded-xl bg-nature-900/90 border border-green-500/40 flex items-center justify-between text-xs">
+                        <span class="text-green-400 font-semibold flex items-center gap-1.5">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Reglamento y Tratamiento de Datos aceptados</span>
+                        </span>
+                        <button type="button" onclick="regresarAReglamento()" class="text-nature-accent hover:text-white text-[11px] underline">
+                            Revisar
+                        </button>
+                    </div>
+
+                    <!-- Contenedor de Alerta de Error en Datos -->
+                    <div id="form-error-box" class="hidden p-3.5 bg-red-950/80 border border-red-500/70 rounded-2xl"></div>
+
+                <!-- Selector de Distancia -->
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">2. Selecciona tu Distancia Oficial:</label>
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="distancia" value="5k" class="peer sr-only" onchange="actualizarDesglosePrecios()">
+                            <div class="p-2.5 sm:p-3 text-center rounded-2xl bg-nature-900/80 border border-nature-700 peer-checked:border-nature-accent peer-checked:bg-nature-700/80 transition-all">
+                                <span class="block font-heading font-black text-base sm:text-lg text-white">5 KM</span>
+                                <span class="block text-[11px] sm:text-xs text-nature-accent font-semibold">$75.000</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="distancia" value="10k" class="peer sr-only" checked onchange="actualizarDesglosePrecios()">
+                            <div class="p-2.5 sm:p-3 text-center rounded-2xl bg-nature-900/80 border border-nature-700 peer-checked:border-nature-accent peer-checked:bg-nature-700/80 transition-all">
+                                <span class="block font-heading font-black text-base sm:text-lg text-white">10 KM</span>
+                                <span class="block text-[11px] sm:text-xs text-nature-accent font-semibold">$95.000</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="distancia" value="21k" class="peer sr-only" onchange="actualizarDesglosePrecios()">
+                            <div class="p-2.5 sm:p-3 text-center rounded-2xl bg-nature-900/80 border border-nature-700 peer-checked:border-nature-accent peer-checked:bg-nature-700/80 transition-all">
+                                <span class="block font-heading font-black text-base sm:text-lg text-white">21 KM</span>
+                                <span class="block text-[11px] sm:text-xs text-nature-accent font-semibold">$125.000</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Datos Personales -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="reg-nombre" class="block text-xs font-semibold text-gray-300 mb-1">Nombre Completo del Atleta *</label>
+                        <input type="text" id="reg-nombre" required placeholder="Ej: Carlos Alberto Mendoza"
+                            autocomplete="name" inputmode="text"
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                        <span id="err-reg-nombre" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Documento de Identidad *</label>
+                        <div class="flex gap-2">
+                            <select id="reg-tipo-doc" class="w-24 bg-nature-900/90 border border-nature-700 rounded-xl px-2 py-3 text-white text-xs focus:outline-none focus:border-nature-accent">
+                                <option value="CC" selected>C.C.</option>
+                                <option value="TI">T.I.</option>
+                                <option value="CE">C.E.</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                            <input type="text" id="reg-doc" required placeholder="Ej: 1020304050"
+                                inputmode="numeric" pattern="[0-9]*"
+                                class="flex-1 bg-nature-900/90 border border-nature-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                        </div>
+                        <span id="err-reg-doc" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                    </div>
+                </div>
+
+                <!-- Fecha de nacimiento y Casilla Menor de Edad -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                    <div>
+                        <label for="reg-fecha-nac" class="block text-xs font-semibold text-gray-300 mb-1">Fecha de Nacimiento *</label>
+                        <input type="date" id="reg-fecha-nac" required
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                        <span id="err-reg-fecha-nac" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                    </div>
+                    <div class="pt-0 sm:pt-6">
+                        <label class="flex items-center gap-2.5 cursor-pointer bg-nature-900/70 p-3 rounded-xl border border-nature-700/80 hover:border-nature-accent/50 transition-colors">
+                            <input type="checkbox" id="reg-es-menor" onchange="toggleMenorEdadCampos()" class="rounded text-nature-accent focus:ring-0 w-4 h-4 cursor-pointer accent-amber-600">
+                            <span class="text-xs text-nature-earth font-medium leading-snug">¿El participante es menor de edad? (5K)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Contenedor condicional para Acudiente (Menores de edad) -->
+                <div id="acudiente-fields-container" class="hidden p-4 rounded-2xl bg-nature-900/90 border border-nature-accent/40 space-y-3">
+                    <div class="flex items-center gap-2 text-nature-accent text-xs font-bold uppercase tracking-wider">
+                        <i class="fas fa-user-shield"></i> Datos del Adulto Responsable / Tutor Legal
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label for="reg-nombre-acudiente" class="block text-[11px] text-gray-300 mb-1">Nombre Completo del Adulto *</label>
+                            <input type="text" id="reg-nombre-acudiente" placeholder="Ej: Marcela Gómez"
+                                inputmode="text"
+                                class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent transition-all">
+                            <span id="err-reg-nombre-acudiente" class="text-[10px] text-red-400 mt-0.5 hidden block"></span>
+                        </div>
+                        <div>
+                            <label for="reg-doc-acudiente" class="block text-[11px] text-gray-300 mb-1">Cédula del Adulto *</label>
+                            <input type="text" id="reg-doc-acudiente" placeholder="Ej: 52123456"
+                                inputmode="numeric"
+                                class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent transition-all">
+                            <span id="err-reg-doc-acudiente" class="text-[10px] text-red-400 mt-0.5 hidden block"></span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label for="reg-tel-acudiente" class="block text-[11px] text-gray-300 mb-1">Teléfono Móvil del Adulto *</label>
+                            <input type="tel" id="reg-tel-acudiente" placeholder="Ej: 3109876543"
+                                inputmode="numeric"
+                                class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent transition-all">
+                            <span id="err-reg-tel-acudiente" class="text-[10px] text-red-400 mt-0.5 hidden block"></span>
+                        </div>
+                        <div>
+                            <label for="reg-parentesco" class="block text-[11px] text-gray-300 mb-1">Parentesco</label>
+                            <select id="reg-parentesco" class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent">
+                                <option value="Padre / Madre">Padre / Madre</option>
+                                <option value="Tutor Legal">Tutor Legal</option>
+                                <option value="Familiar Autorizado">Familiar Autorizado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Correo y Teléfono -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="reg-email" class="block text-xs font-semibold text-gray-300 mb-1">Correo Electrónico Personal *</label>
+                        <input type="email" id="reg-email" required placeholder="correo@ejemplo.com"
+                            autocomplete="email" inputmode="email"
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                        <span id="err-reg-email" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                    </div>
+                    <div>
+                        <label for="reg-tel" class="block text-xs font-semibold text-gray-300 mb-1">Celular / WhatsApp (10 dígitos) *</label>
+                        <input type="tel" id="reg-tel" required placeholder="Ej: 3101234567"
+                            autocomplete="tel" inputmode="numeric"
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                        <span id="err-reg-tel" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                    </div>
+                </div>
+
+                <!-- Género, Categoría y Talla -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label for="reg-genero" class="block text-xs font-semibold text-gray-300 mb-1">Rama / Género *</label>
+                        <select id="reg-genero" required
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-nature-accent">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="reg-cat" class="block text-xs font-semibold text-gray-300 mb-1">Categoría por Edad *</label>
+                        <select id="reg-cat" required
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-nature-accent">
+                            <option value="Libre (18-39 años)">Libre (18 a 39 años)</option>
+                            <option value="Máster A (40-49 años)">Máster A (40 a 49 años)</option>
+                            <option value="Máster B (50+ años)">Máster B (50+ años)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="reg-talla" class="block text-xs font-semibold text-gray-300 mb-1">Talla de Camiseta *</label>
+                        <select id="reg-talla" required
+                            class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-nature-accent">
+                            <option value="S">Talla S</option>
+                            <option value="M" selected>Talla M</option>
+                            <option value="L">Talla L</option>
+                            <option value="XL">Talla XL</option>
+                            <option value="XXL">Talla XXL</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- EPS y Cobertura de Salud -->
+                <div>
+                    <label for="reg-eps" class="block text-xs font-semibold text-gray-300 mb-1">EPS o Entidad de Cobertura Médica *</label>
+                    <input type="text" id="reg-eps" required placeholder="Ej: Sanitas, Sura, Nueva EPS, Sisbén"
+                        inputmode="text"
+                        class="w-full bg-nature-900/90 border border-nature-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-nature-accent transition-all">
+                    <span id="err-reg-eps" class="text-[11px] text-red-400 mt-1 hidden block"></span>
+                </div>
+
+                <!-- Contacto de Emergencia Oficial (Obligatorio) -->
+                <div class="p-4 rounded-2xl bg-nature-900/80 border border-nature-700/70 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fas fa-kit-medical text-red-400"></i> Contacto de Emergencia en Carrera *
+                        </span>
+                        <span class="text-[10px] text-gray-400">Debe ser un familiar o allegado</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-1">
+                            <label for="reg-emergencia-nombre" class="block text-[11px] text-gray-300 mb-1">Nombre Completo *</label>
+                            <input type="text" id="reg-emergencia-nombre" required placeholder="Ej: María Pérez"
+                                inputmode="text"
+                                class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent transition-all">
+                            <span id="err-reg-emergencia-nombre" class="text-[10px] text-red-400 mt-0.5 hidden block"></span>
+                        </div>
+                        <div>
+                            <label for="reg-emergencia-tel" class="block text-[11px] text-gray-300 mb-1">Teléfono Móvil *</label>
+                            <input type="tel" id="reg-emergencia-tel" required placeholder="Ej: 3110000000"
+                                inputmode="numeric"
+                                class="w-full bg-nature-800 border border-nature-700 rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent transition-all">
+                            <span id="err-reg-emergencia-tel" class="text-[10px] text-red-400 mt-0.5 hidden block"></span>
+                        </div>
+                        <div>
+                            <label for="reg-emergencia-parentesco" class="block text-[11px] text-gray-300 mb-1">Parentesco</label>
+                            <select id="reg-emergencia-parentesco" class="w-full bg-nature-800 border border-nature-700 rounded-xl px-2 py-2.5 text-white text-xs focus:outline-none focus:border-nature-accent">
+                                <option value="Cónyuge / Pareja">Cónyuge / Pareja</option>
+                                <option value="Madre / Padre" selected>Madre / Padre</option>
+                                <option value="Hermano / Hermana">Hermano / Hermana</option>
+                                <option value="Hijo / Hija">Hijo / Hija</option>
+                                <option value="Familiar / Amigo">Familiar / Amigo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen de Costo con Tarifa Wompi Asumida por el Corredor -->
+                <div class="bg-nature-900/90 p-4 rounded-2xl border border-nature-accent/50 mt-4 space-y-2">
+                    <div class="flex justify-between items-center text-xs text-gray-300">
+                        <span>Tarifa de Inscripción Oficial:</span>
+                        <span id="form-base-price" class="font-semibold text-white">$95.000 COP</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-400">
+                        <span>Tarifa pasarela de pagos Wompi:</span>
+                        <span id="form-fee-price" class="font-semibold text-nature-accent">+$3.900 COP</span>
+                    </div>
+                    <div class="pt-2 border-t border-nature-700 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs text-gray-400 block font-medium">Total a Pagar con Wompi:</span>
+                            <span id="form-total-price" class="font-heading font-black text-2xl text-nature-accent">$98.900 COP</span>
+                        </div>
+                        <div class="text-right text-xs text-gray-400">
+                            <span class="text-green-400 block font-semibold"><i class="fas fa-shield-alt mr-1"></i> Transacción Cifrada</span>
+                            <span>Chip, seguro y kit incluidos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen de conformidad legal -->
+                <div class="pt-1 flex items-center justify-between text-xs text-nature-300 bg-nature-900/60 px-3 py-2 rounded-xl border border-nature-700/50">
+                    <span class="flex items-center gap-1.5">
+                        <i class="fas fa-check-circle text-green-400"></i>
+                        <span>Reglamento oficial y política de datos aceptados en el Paso 1.</span>
+                    </span>
+                    <a href="terminos.html" target="_blank" class="text-nature-accent underline hover:text-white text-[11px]">Ver términos</a>
+                </div>
+
+                <!-- Botón de Envío y Pasarela -->
+                <div class="pt-2">
+                    <button type="submit" id="btn-submit-pago"
+                        class="w-full bg-nature-accent hover:bg-white text-nature-900 font-black py-4 rounded-xl transition-all shadow-[0_4px_25px_rgba(212,163,115,0.4)] text-base flex items-center justify-center gap-2 transform active:scale-95">
+                        <i class="fas fa-lock text-nature-900 text-lg"></i> Proceder al Pago Seguro con Wompi
+                    </button>
+                    
+                    <!-- Badges de Métodos de Pago Wompi -->
+                    <div class="flex items-center justify-center gap-3 mt-3 text-xs text-gray-400 flex-wrap">
+                        <span class="flex items-center gap-1"><i class="fas fa-mobile-alt text-nature-accent"></i> Nequi</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-university text-nature-accent"></i> PSE</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-credit-card text-nature-accent"></i> Tarjetas</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-building text-nature-accent"></i> Bancolombia</span>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- MODAL: VISOR DE DOCUMENTO LEGAL COMPLETO -->
+    <!-- ========================================================== -->
+    <div id="modal-visor-legal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
+        <div class="modal-box bg-nature-800 border border-nature-accent/60 rounded-3xl max-w-3xl w-full max-h-[92dvh] sm:max-h-[90vh] flex flex-col shadow-2xl relative overflow-hidden">
+            <!-- Header Visor -->
+            <div class="p-4 sm:p-6 pb-3 sm:pb-4 border-b border-nature-700/70 flex items-center justify-between bg-nature-900/70">
+                <div class="flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-xl bg-nature-accent/20 border border-nature-accent/40 text-nature-accent flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-file-contract"></i>
+                    </span>
+                    <div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-nature-accent block leading-none">Documento Oficial</span>
+                        <h3 class="font-heading font-black text-lg sm:text-xl text-white">Reglamento Oficial & Términos Legales</h3>
+                    </div>
+                </div>
+                <button onclick="cerrarVisorLegal()" aria-label="Cerrar visor legal" class="text-gray-400 hover:text-white text-xl w-11 h-11 rounded-full bg-nature-700/60 hover:bg-nature-700 flex items-center justify-center transition-colors min-w-[44px] min-h-[44px]">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Contenido scrollable completo -->
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm text-gray-300 leading-relaxed max-h-[60vh]">
+                <!-- Sección 1 -->
+                <div class="space-y-2">
+                    <h4 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-nature-accent/20 text-nature-accent flex items-center justify-center text-xs">1</span>
+                        Reglamento de Competencia & Convivencia
+                    </h4>
+                    <p>La <strong>Maratón Nocaima Trail 2026</strong> es un evento de carrera por senderos de montaña (trail running) que se rige bajo los principios de respeto absoluto por la naturaleza, autosuficiencia parcial y juego limpio.</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-300">
+                        <li><strong>Política Cero Basuras:</strong> Arrojar envoltorios, plásticos o residuos en el sendero acarrea descalificación inmediata.</li>
+                        <li><strong>Dorsal y Chip Oficial:</strong> El dorsal debe portarse visible en el pecho durante todo el trayecto. No es transferible.</li>
+                        <li><strong>Tiempos de Corte:</strong> Por seguridad de los atletas, los jueces podrán retirar a competidores que superen los tiempos límite fijados en cada puesto de control.</li>
+                    </ul>
+                </div>
+
+                <!-- Sección 2 -->
+                <div class="space-y-2">
+                    <h4 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-nature-accent/20 text-nature-accent flex items-center justify-center text-xs">2</span>
+                        Tratamiento de Datos Personales (Ley 1581 de 2012)
+                    </h4>
+                    <p>En cumplimiento de la Ley Estatutaria 1581 de 2012 y el Decreto 1377 de 2013 de Colombia, autorizas expresamente a la organización a recolectar y tratar tus datos personales para asignación de dorsal, póliza de seguro médico contra accidentes en carrera y comunicación de resultados oficiales.</p>
+                </div>
+
+                <!-- Sección 3 -->
+                <div class="space-y-2">
+                    <h4 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-nature-accent/20 text-nature-accent flex items-center justify-center text-xs">3</span>
+                        Exoneración de Responsabilidad Médica y Deportiva
+                    </h4>
+                    <p>El participante declara bajo la gravedad de juramento encontrarse en condiciones físicas y mentales óptimas para asumir la exigencia de la distancia elegida (5K, 10K o 21K), y contar con afiliación activa al Sistema de Seguridad Social en Salud (EPS, Sisbén o seguro médico).</p>
+                </div>
+
+                <!-- Sección 4 -->
+                <div class="space-y-2">
+                    <h4 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-nature-accent/20 text-nature-accent flex items-center justify-center text-xs">4</span>
+                        Participación de Menores de Edad
+                    </h4>
+                    <p>Los menores de 18 años únicamente podrán competir en la distancia familiar 5K con la debida autorización de su padre, madre o acudiente responsable.</p>
+                </div>
+
+                <!-- Sección 5 -->
+                <div class="space-y-2">
+                    <h4 class="font-heading font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-nature-accent/20 text-nature-accent flex items-center justify-center text-xs">5</span>
+                        Pagos Seguros Wompi & Términos Financieros
+                    </h4>
+                    <p>Las transacciones se procesan de forma cifrada a través de la pasarela segura oficial Wompi (Bancolombia). Las tarifas incluyen chip de cronometraje, seguro médico de competencia y kit oficial del corredor.</p>
+                </div>
+            </div>
+
+            <!-- Footer Visor con Aceptación Directa para Llenar Datos -->
+            <div class="p-4 sm:p-5 border-t border-nature-700/80 bg-nature-900/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <button type="button" onclick="cerrarVisorLegal()" class="w-full sm:w-auto py-3 px-5 rounded-xl bg-nature-700 hover:bg-nature-600 text-gray-300 text-xs sm:text-sm transition-colors font-semibold">
+                    ← Volver
+                </button>
+                <button type="button" onclick="aceptarDesdeVisorLegal()"
+                    class="w-full sm:w-auto py-3.5 px-7 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(212,163,115,0.4)] flex items-center justify-center gap-2 transform active:scale-95">
+                    <i class="fas fa-check-circle text-base"></i>
+                    <span>Entendido, Aceptar Términos y Llenar mis Datos</span>
+                    <i class="fas fa-arrow-right text-xs ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- MODAL: ALERTA Y VENTANA EMERGENTE PERSONALIZADA CON CSS -->
+    <!-- ========================================================== -->
+    <div id="modal-custom-alert" class="modal hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+        <div class="modal-box bg-nature-800 border-2 border-nature-accent/60 rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative text-center space-y-4">
+            <!-- Icono Dinámico según Tipo -->
+            <div id="custom-alert-icon-wrap" class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center text-3xl shadow-lg border">
+                <i id="custom-alert-icon" class="fas fa-exclamation-triangle"></i>
+            </div>
+            
+            <!-- Título y Mensaje Estilizado -->
+            <div>
+                <h3 id="custom-alert-title" class="font-heading font-black text-xl sm:text-2xl text-white mb-2 leading-snug">Atención</h3>
+                <div id="custom-alert-msg" class="text-xs sm:text-sm text-gray-300 leading-relaxed max-h-56 overflow-y-auto px-1 space-y-1">
+                    Mensaje informativo
+                </div>
+            </div>
+
+            <!-- Botones de Acción Estilizados -->
+            <div id="custom-alert-actions" class="pt-2 flex flex-col sm:flex-row gap-2.5 justify-center">
+                <button type="button" id="custom-alert-btn-cancel" onclick="cerrarAlertaModal(false)" class="hidden py-3 px-5 rounded-xl bg-nature-700/80 hover:bg-nature-700 text-gray-300 text-xs sm:text-sm font-semibold transition-colors">
+                    Cancelar
+                </button>
+                <button type="button" id="custom-alert-btn-ok" onclick="cerrarAlertaModal(true)" class="w-full py-3.5 px-6 rounded-xl bg-nature-accent hover:bg-white text-nature-900 font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(212,163,115,0.4)] transform active:scale-95">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- TOAST NOTIFICATION CONTAINER (RESPONSIVO Y ESTILIZADO) -->
+    <!-- ========================================================== -->
+    <div id="toast" class="fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:max-w-md z-50 bg-nature-900/95 border border-nature-accent text-white px-4 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none flex items-center justify-between gap-3 text-xs sm:text-sm backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <i id="toast-icon" class="fas fa-circle-check text-nature-accent text-lg flex-shrink-0"></i>
+            <span id="toast-msg">Mensaje</span>
+        </div>
+        <button type="button" onclick="dismissToast()" aria-label="Cerrar notificación" class="text-gray-400 hover:text-white p-1 rounded-lg transition-colors flex-shrink-0 min-w-[32px] min-h-[32px] flex items-center justify-center">
+            <i class="fas fa-times text-xs"></i>
+        </button>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- JAVASCRIPT LOGIC -->
+    <!-- ========================================================== -->
+    <script>
+        // Data de rutas para el modal dinámico
+        const routeData = {
+            '5k': {
+                badge: '5K Iniciación & Familiar',
+                title: 'Ruta 5 KM Nocaima Trail',
+                dist: '5.2 km',
+                desnivel: '+180m',
+                maxalt: '1.240 msnm',
+                corte: '1h 30m',
+                terrain: '70% Sendero de herradura • 30% Trocha',
+                path: 'M 0 130 Q 150 110 300 80 T 600 130 L 600 160 L 0 160 Z',
+                stroke: 'M 0 130 Q 150 110 300 80 T 600 130',
+                endkm: 'Km 5.2 (Meta)',
+                desc: 'Un recorrido alegre y accesible que rodea las fincas paneleras más representativas. Desniveles suaves, terreno firme con poca piedra y 1 puesto de hidratación completo en el kilómetro 2.5.',
+                price: '$75.000 COP'
+            },
+            '10k': {
+                badge: '10K Desafío Aventura',
+                title: 'Ruta 10 KM Nocaima Trail',
+                dist: '10.4 km',
+                desnivel: '+520m',
+                maxalt: '1.480 msnm',
+                corte: '3h 00m',
+                terrain: '85% Single Track • 15% Rural',
+                path: 'M 0 130 Q 80 120 150 70 T 300 35 T 450 90 T 600 130 L 600 160 L 0 160 Z',
+                stroke: 'M 0 130 Q 80 120 150 70 T 300 35 T 450 90 T 600 130',
+                endkm: 'Km 10.4 (Meta)',
+                desc: 'La ruta preferida de los corredores: incluye cruces de arroyos limpios, pasos técnicos por bosque de galería y un ascenso exigente con vista panorámica de 360° al valle del Gualivá. 3 puestos de abastecimiento.',
+                price: '$95.000 COP'
+            },
+            '21k': {
+                badge: '21K Media Maratón Élite',
+                title: 'Ruta 21 KM Élite Nocaima Trail',
+                dist: '21.2 km',
+                desnivel: '+1.180m',
+                maxalt: '1.820 msnm',
+                corte: '5h 00m',
+                terrain: '90% Sendero Montaña & Barro • 10% Camino',
+                path: 'M 0 130 Q 60 110 120 40 T 240 85 T 360 20 T 480 80 T 600 130 L 600 160 L 0 160 Z',
+                stroke: 'M 0 130 Q 60 110 120 40 T 240 85 T 360 20 T 480 80 T 600 130',
+                endkm: 'Km 21.2 (Meta)',
+                desc: 'La reina de la montaña. Desafío extremo que corona dos filos montañosos con barro auténtico, pendientes de hasta 28% y bosque nativo virgen. Requiere preparación física y material obligatorio.',
+                price: '$125.000 COP'
+            }
+        };
+
+        let currentSelectedDistance = '10k';
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('py-2', 'bg-nature-800/95', 'shadow-xl');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('py-2', 'shadow-xl');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach((section) => {
+            observer.observe(section);
+        });
+
+        // Countdown Timer Logic (Nov 15, 2026 06:30:00)
+        const countDownDate = new Date("Nov 15, 2026 06:30:00").getTime();
+
+        const x = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }, 1000);
+
+        // Accordion FAQ Toggle
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isActive = content.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+            });
+            document.querySelectorAll('#faq i').forEach(i => {
+                i.classList.remove('rotate-180');
+            });
+
+            if (!isActive) {
+                content.classList.add('active');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        // Route Modal Functions
+        function openRouteModal(distKey) {
+            currentSelectedDistance = distKey;
+            const data = routeData[distKey];
+            if (!data) return;
+
+            document.getElementById('route-modal-badge').innerText = data.badge;
+            document.getElementById('route-modal-title').innerText = data.title;
+            document.getElementById('route-modal-dist').innerText = data.dist;
+            document.getElementById('route-modal-desnivel').innerText = data.desnivel;
+            document.getElementById('route-modal-maxalt').innerText = data.maxalt;
+            document.getElementById('route-modal-corte').innerText = data.corte;
+            document.getElementById('route-modal-terrain').innerText = data.terrain;
+            document.getElementById('route-modal-endkm').innerText = data.endkm;
+            document.getElementById('route-modal-desc').innerText = data.desc;
+
+            // Update SVG
+            document.getElementById('route-svg-path').setAttribute('d', data.path);
+            document.getElementById('route-svg-stroke').setAttribute('d', data.stroke);
+
+            document.getElementById('route-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRouteModal() {
+            document.getElementById('route-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openRegistrationModalFromRoute() {
+            closeRouteModal();
+            openRegistrationModal(currentSelectedDistance);
+        }
+
+        function downloadGpxSimulation() {
+            const dist = (currentSelectedDistance || '10k').toUpperCase();
+            const filename = `Nocaima_Trail_${dist}_2026.gpx`;
+            
+            // XML GPX estándar compatible con Garmin, Strava, Coros, Suunto
+            const gpxContent = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Maratón Nocaima Trail 2026 - Oficial" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Nocaima Trail 2026 - ${dist}</name>
+    <desc>Track oficial de carrera para ${dist} en Nocaima, Cundinamarca.</desc>
+    <time>2026-11-15T06:30:00Z</time>
+  </metadata>
+  <trk>
+    <name>Nocaima Trail ${dist}</name>
+    <trkseg>
+      <trkpt lat="5.0682" lon="-74.3821"><ele>1100</ele><name>Salida Parque Principal</name></trkpt>
+      <trkpt lat="5.0695" lon="-74.3850"><ele>1130</ele></trkpt>
+      <trkpt lat="5.0720" lon="-74.3885"><ele>1210</ele></trkpt>
+      <trkpt lat="5.0755" lon="-74.3910"><ele>1320</ele><name>Hidratación 1</name></trkpt>
+      <trkpt lat="5.0790" lon="-74.3940"><ele>1480</ele><name>Filo de Montaña</name></trkpt>
+      <trkpt lat="5.0740" lon="-74.3890"><ele>1290</ele></trkpt>
+      <trkpt lat="5.0700" lon="-74.3840"><ele>1180</ele><name>Quebrada Chupadero</name></trkpt>
+      <trkpt lat="5.0682" lon="-74.3821"><ele>1100</ele><name>Meta Parque Principal</name></trkpt>
+    </trkseg>
+  </trk>
+</gpx>`;
+
+            const blob = new Blob([gpxContent], { type: 'application/gpx+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast(`¡Track GPX oficial de ${dist} descargado con éxito! Listo para tu reloj.`);
+        }
+
+        // Registration Modal Functions
+        function openRegistrationModal(distKey = '10k') {
+            const radio = document.querySelector(`input[name="distancia"][value="${distKey}"]`);
+            if (radio) {
+                radio.checked = true;
+                if (typeof actualizarDesglosePrecios === 'function') {
+                    actualizarDesglosePrecios();
+                }
+            }
+
+            // Siempre reiniciar al Paso 1 (Reglamento) y ocultar el formulario de datos
+            const stepReglamento = document.getElementById('modal-step-reglamento');
+            const stepDatos = document.getElementById('modal-step-datos');
+            const regErrBox = document.getElementById('reglamento-error-box');
+            const formErrBox = document.getElementById('form-error-box');
+
+            if (stepReglamento) stepReglamento.classList.remove('hidden');
+            if (stepDatos) stepDatos.classList.add('hidden');
+            if (regErrBox) regErrBox.classList.add('hidden');
+            if (formErrBox) formErrBox.classList.add('hidden');
+
+            const modal = document.getElementById('registration-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            const modalContainer = modal.querySelector('div');
+            if (modalContainer) modalContainer.scrollTop = 0;
+        }
+
+        function closeRegistrationModal() {
+            document.getElementById('registration-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function verificarAceptacionTerminos() {
+            const regChecked = document.getElementById('reg-acepta-reglamento')?.checked;
+            const datosChecked = document.getElementById('reg-acepta-datos')?.checked;
+            const regErrBox = document.getElementById('reglamento-error-box');
+            if (regChecked && datosChecked && regErrBox) {
+                regErrBox.classList.add('hidden');
+            }
+        }
+
+        function avanzarAFormularioDatos() {
+            const regChecked = document.getElementById('reg-acepta-reglamento')?.checked;
+            const datosChecked = document.getElementById('reg-acepta-datos')?.checked;
+            const regErrBox = document.getElementById('reglamento-error-box');
+
+            if (!regChecked || !datosChecked) {
+                if (regErrBox) {
+                    regErrBox.classList.remove('hidden');
+                    regErrBox.classList.add('animate-shake');
+                    setTimeout(() => regErrBox.classList.remove('animate-shake'), 400);
+                }
+                mostrarAlertaModal({
+                    titulo: 'Aceptación Requerida',
+                    mensaje: 'Debes marcar ambas casillas para aceptar el <strong>Reglamento Oficial de Carrera</strong> y el <strong>Tratamiento de Datos Personales</strong> antes de ingresar tus datos.',
+                    tipo: 'warning',
+                    textoBoton: 'Entendido, voy a marcarlas'
+                });
+                return;
+            }
+
+            if (regErrBox) regErrBox.classList.add('hidden');
+            document.getElementById('modal-step-reglamento')?.classList.add('hidden');
+            const stepDatos = document.getElementById('modal-step-datos');
+            if (stepDatos) {
+                stepDatos.classList.remove('hidden');
+                if (typeof actualizarDesglosePrecios === 'function') {
+                    actualizarDesglosePrecios();
+                }
+            }
+
+            const modal = document.getElementById('registration-modal');
+            const modalContainer = modal?.querySelector('div');
+            if (modalContainer) modalContainer.scrollTop = 0;
+        }
+
+        function regresarAReglamento() {
+            document.getElementById('modal-step-datos')?.classList.add('hidden');
+            document.getElementById('modal-step-reglamento')?.classList.remove('hidden');
+            const modal = document.getElementById('registration-modal');
+            const modalContainer = modal?.querySelector('div');
+            if (modalContainer) modalContainer.scrollTop = 0;
+        }
+
+        // Visor de Documento Legal Completo (In-Modal)
+        function abrirVisorLegalCompleto() {
+            document.getElementById('modal-visor-legal')?.classList.remove('hidden');
+        }
+
+        function cerrarVisorLegal() {
+            document.getElementById('modal-visor-legal')?.classList.add('hidden');
+        }
+
+        function aceptarDesdeVisorLegal() {
+            // Marcar checkboxes obligatorios
+            const chkReg = document.getElementById('reg-acepta-reglamento');
+            const chkDat = document.getElementById('reg-acepta-datos');
+            if (chkReg) chkReg.checked = true;
+            if (chkDat) chkDat.checked = true;
+
+            // Cerrar visor
+            cerrarVisorLegal();
+
+            // Avanzar al formulario de datos inmediatamente
+            avanzarAFormularioDatos();
+
+            showToast('¡Términos y reglamento aceptados! Ahora llena tus datos personales.');
+        }
+
+        // Compatibilidad por si se llama externamente
+        function openReglamentoModal() {
+            openRegistrationModal();
+        }
+
+        function closeReglamentoModal() {
+            closeRegistrationModal();
+        }
+
+        // Sistema de Alerta Personalizada (CSS Puro & Glassmorphism)
+        let customAlertCallback = null;
+        function mostrarAlertaModal(opciones = {}) {
+            let titulo = 'Atención';
+            let mensaje = '';
+            let tipo = 'warning';
+            let textoBoton = 'Entendido';
+            let botonCancelar = false;
+            let textoCancelar = 'Cancelar';
+            let onAceptar = null;
+
+            if (typeof opciones === 'string') {
+                mensaje = opciones;
+            } else if (opciones && typeof opciones === 'object') {
+                titulo = opciones.titulo || titulo;
+                mensaje = opciones.mensaje || '';
+                tipo = opciones.tipo || tipo;
+                textoBoton = opciones.textoBoton || textoBoton;
+                botonCancelar = opciones.botonCancelar || false;
+                textoCancelar = opciones.textoCancelar || textoCancelar;
+                onAceptar = opciones.onAceptar || null;
+            }
+
+            customAlertCallback = onAceptar;
+            const modal = document.getElementById('modal-custom-alert');
+            if (!modal) return;
+
+            const titleEl = document.getElementById('custom-alert-title');
+            const msgEl = document.getElementById('custom-alert-msg');
+            const iconWrap = document.getElementById('custom-alert-icon-wrap');
+            const iconEl = document.getElementById('custom-alert-icon');
+            const btnOk = document.getElementById('custom-alert-btn-ok');
+            const btnCancel = document.getElementById('custom-alert-btn-cancel');
+
+            if (titleEl) titleEl.innerText = titulo;
+            if (msgEl) msgEl.innerHTML = mensaje;
+            if (btnOk) btnOk.innerText = textoBoton;
+
+            // Limpiar clases
+            iconWrap.className = 'w-16 h-16 rounded-2xl mx-auto flex items-center justify-center text-3xl shadow-lg border';
+            btnOk.className = 'w-full py-3.5 px-6 rounded-xl font-black text-xs sm:text-sm transition-all transform active:scale-95';
+
+            if (tipo === 'error') {
+                iconWrap.classList.add('bg-red-500/20', 'text-red-400', 'border-red-500/50');
+                iconEl.className = 'fas fa-times-circle';
+                btnOk.classList.add('bg-red-500', 'hover:bg-red-400', 'text-white', 'shadow-[0_4px_20px_rgba(239,68,68,0.4)]');
+            } else if (tipo === 'success') {
+                iconWrap.classList.add('bg-green-500/20', 'text-green-400', 'border-green-500/50');
+                iconEl.className = 'fas fa-check-circle';
+                btnOk.classList.add('bg-green-500', 'hover:bg-green-400', 'text-nature-900', 'shadow-[0_4px_20px_rgba(34,197,94,0.4)]');
+            } else if (tipo === 'info') {
+                iconWrap.classList.add('bg-nature-accent/20', 'text-nature-accent', 'border-nature-accent/50');
+                iconEl.className = 'fas fa-info-circle';
+                btnOk.classList.add('bg-nature-accent', 'hover:bg-white', 'text-nature-900', 'shadow-[0_4px_20px_rgba(212,163,115,0.4)]');
+            } else {
+                iconWrap.classList.add('bg-amber-500/20', 'text-amber-400', 'border-amber-500/50');
+                iconEl.className = 'fas fa-exclamation-triangle';
+                btnOk.classList.add('bg-nature-accent', 'hover:bg-white', 'text-nature-900', 'shadow-[0_4px_20px_rgba(212,163,115,0.4)]');
+            }
+
+            if (btnCancel) {
+                if (botonCancelar) {
+                    btnCancel.innerText = textoCancelar;
+                    btnCancel.classList.remove('hidden');
+                } else {
+                    btnCancel.classList.add('hidden');
+                }
+            }
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            btnOk.focus();
+        }
+
+        window.mostrarAlertaModal = mostrarAlertaModal;
+
+        function cerrarAlertaModal(aceptado = false) {
+            const modal = document.getElementById('modal-custom-alert');
+            if (modal) modal.classList.add('hidden');
+
+            const regModal = document.getElementById('registration-modal');
+            const routeModal = document.getElementById('route-modal');
+            const legalModal = document.getElementById('modal-visor-legal');
+            const anyOpen = (regModal && !regModal.classList.contains('hidden')) || 
+                            (routeModal && !routeModal.classList.contains('hidden')) ||
+                            (legalModal && !legalModal.classList.contains('hidden'));
+            if (!anyOpen) {
+                document.body.style.overflow = 'auto';
+            }
+
+            if (aceptado && typeof customAlertCallback === 'function') {
+                const cb = customAlertCallback;
+                customAlertCallback = null;
+                cb();
+            }
+        }
+
+        window.cerrarAlertaModal = cerrarAlertaModal;
+
+        // Close modales on backdrop click or ESC key
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'route-modal') closeRouteModal();
+            if (e.target.id === 'registration-modal') closeRegistrationModal();
+            if (e.target.id === 'modal-visor-legal') cerrarVisorLegal();
+            if (e.target.id === 'modal-custom-alert') cerrarAlertaModal(false);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!document.getElementById('modal-custom-alert')?.classList.contains('hidden')) {
+                    cerrarAlertaModal(false);
+                    return;
+                }
+                closeRouteModal();
+                closeRegistrationModal();
+                cerrarVisorLegal();
+            }
+        });
+
+        // Toast Helper con diseño responsivo y close button
+        function showToast(msg, tipo = 'success') {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-msg');
+            const iconEl = document.getElementById('toast-icon');
+            if (!toast || !msgEl) return;
+
+            msgEl.innerText = msg;
+            
+            if (iconEl) {
+                if (tipo === 'error') {
+                    iconEl.className = 'fas fa-times-circle text-red-400 text-lg flex-shrink-0';
+                } else if (tipo === 'warning') {
+                    iconEl.className = 'fas fa-exclamation-triangle text-amber-400 text-lg flex-shrink-0';
+                } else {
+                    iconEl.className = 'fas fa-check-circle text-nature-accent text-lg flex-shrink-0';
+                }
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                dismissToast();
+            }, 4000);
+        }
+
+        function dismissToast() {
+            const toast = document.getElementById('toast');
+            if (toast) {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Detectar si el usuario viene de aceptar términos legales desde terminos.html o enlace directo
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const debeInscribirse = urlParams.get('inscribirme') === '1' || urlParams.get('inscribirme') === 'true';
+            const terminosAceptados = urlParams.get('terminosAceptados') === '1' || urlParams.get('terminosAceptados') === 'true';
+            const dist = urlParams.get('dist') || '10k';
+
+            if (debeInscribirse || terminosAceptados) {
+                openRegistrationModal(dist);
+
+                if (terminosAceptados) {
+                    const chkReg = document.getElementById('reg-acepta-reglamento');
+                    const chkDat = document.getElementById('reg-acepta-datos');
+                    if (chkReg) chkReg.checked = true;
+                    if (chkDat) chkDat.checked = true;
+
+                    // Avanzar directamente al paso 2 para llenar los datos
+                    avanzarAFormularioDatos();
+                    showToast('¡Términos aceptados! Ingresa tus datos para completar tu inscripción.');
+                }
+            }
+        });
+    </script>
+
+    <!-- ========================================================== -->
+    <!-- BOTÓN FLOTANTE OFICIAL DE ATENCIÓN POR WHATSAPP -->
+    <!-- ========================================================== -->
+    <aside aria-label="Soporte oficial al atleta por WhatsApp" class="fixed bottom-6 left-6 z-40 flex items-center group">
+        <a href="https://wa.me/573100000000?text=Hola%20organizadores%20de%20Nocaima%20Trail%202026%2C%20tengo%20una%20consulta%20sobre%20la%20carrera."
+            target="_blank" rel="noopener noreferrer"
+            aria-label="Contactar a la organización de Nocaima Trail por WhatsApp"
+            class="w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-[0_4px_25px_rgba(16,185,129,0.5)] transform hover:scale-110 active:scale-95 transition-all">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="hidden sm:block ml-3 px-3.5 py-1.5 rounded-full bg-nature-900/90 border border-nature-500/40 text-xs text-gray-200 font-medium shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+            ¿Dudas sobre la carrera? <span class="text-green-400 font-bold">Chatea con nosotros</span>
+        </div>
+    </aside>
+
+    <!-- Integración Wompi Checkout & Validación -->
+    <script src="assets/js/registro.js"></script>
+</body>
+
+</html>
