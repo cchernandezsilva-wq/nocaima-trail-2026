@@ -209,6 +209,74 @@
         .alert-glow {
             animation: glowPulse 2s infinite ease-in-out;
         }
+
+        /* Ambient Glow behind Hero Title */
+        .hero-title-glow {
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 50px rgba(212, 163, 115, 0.35);
+        }
+
+        /* Glossy Shimmer Animation on CTAs */
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+            transform: translateX(-150%) rotate(25deg);
+            pointer-events: none;
+        }
+        .btn-shimmer:hover::after {
+            animation: shimmerSweep 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* WhatsApp Breathing Aura */
+        @keyframes pulseWhatsApp {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7), 0 6px 25px rgba(16, 185, 129, 0.45);
+            }
+            50% {
+                box-shadow: 0 0 0 14px rgba(16, 185, 129, 0), 0 8px 32px rgba(16, 185, 129, 0.65);
+            }
+        }
+        .whatsapp-pulse {
+            animation: pulseWhatsApp 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        /* Countdown Glassmorphism Cards */
+        .countdown-card {
+            background: linear-gradient(145deg, rgba(8, 28, 21, 0.85) 0%, rgba(27, 67, 50, 0.55) 100%);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 163, 115, 0.35);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .countdown-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            border-color: rgba(212, 163, 115, 0.85);
+            box-shadow: 0 18px 36px -5px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 163, 115, 0.35);
+        }
+
+        /* Neon Glow Accents for Route Cards */
+        .route-5k {
+            border-top: 4px solid #52b788 !important;
+        }
+        .route-10k {
+            border-top: 4px solid #d4a373 !important;
+        }
+        .route-21k {
+            border-top: 4px solid #e76f51 !important;
+        }
     </style>
 </head>
 
@@ -306,7 +374,7 @@
                 <span class="bg-nature-900/60 backdrop-blur-sm border border-nature-500/30 px-3 py-1 rounded-full"><i class="fas fa-route text-nature-accent mr-1"></i> A 1h45m de Bogotá (Calle 80)</span>
             </div>
 
-            <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight mb-6 uppercase tracking-tight">
+            <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight mb-6 uppercase tracking-tight hero-title-glow">
                 Conquista la <br>
                 <span class="text-gradient">Montaña</span>
             </h1>
@@ -319,7 +387,7 @@
             <!-- Dual CTA Action Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
                 <button onclick="openRegistrationModal()"
-                    class="w-full sm:w-auto bg-nature-accent text-nature-900 hover:bg-white font-black text-lg py-4 px-9 rounded-2xl transition-all shadow-[0_0_25px_rgba(212,163,115,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] transform hover:-translate-y-1">
+                    class="btn-shimmer w-full sm:w-auto bg-nature-accent text-nature-900 hover:bg-white font-black text-lg py-4 px-9 rounded-2xl transition-all shadow-[0_0_25px_rgba(212,163,115,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] transform hover:-translate-y-1">
                     <i class="fas fa-ticket mr-2"></i> Inscribirme Ahora (Preventa)
                 </button>
                 <a href="#recorridos"
@@ -344,25 +412,25 @@
                 <div class="grid grid-cols-4 gap-3 sm:gap-6">
                     <div class="flex flex-col items-center">
                         <div id="days"
-                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            class="countdown-card text-3xl sm:text-5xl font-heading font-black text-white w-full aspect-square flex items-center justify-center rounded-2xl shadow-inner">
                             00</div>
                         <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Días</span>
                     </div>
                     <div class="flex flex-col items-center">
                         <div id="hours"
-                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            class="countdown-card text-3xl sm:text-5xl font-heading font-black text-white w-full aspect-square flex items-center justify-center rounded-2xl shadow-inner">
                             00</div>
                         <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Horas</span>
                     </div>
                     <div class="flex flex-col items-center">
                         <div id="minutes"
-                            class="text-3xl sm:text-5xl font-heading font-black text-white bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-500/40 shadow-inner">
+                            class="countdown-card text-3xl sm:text-5xl font-heading font-black text-white w-full aspect-square flex items-center justify-center rounded-2xl shadow-inner">
                             00</div>
                         <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Minutos</span>
                     </div>
                     <div class="flex flex-col items-center">
                         <div id="seconds"
-                            class="text-3xl sm:text-5xl font-heading font-black text-nature-accent bg-black/50 backdrop-blur-md w-full aspect-square flex items-center justify-center rounded-2xl border border-nature-accent/60 shadow-[0_0_15px_rgba(212,163,115,0.25)]">
+                            class="countdown-card text-3xl sm:text-5xl font-heading font-black text-nature-accent w-full aspect-square flex items-center justify-center rounded-2xl">
                             00</div>
                         <span class="text-[11px] sm:text-xs mt-2 text-nature-accent font-bold uppercase tracking-widest">Segundos</span>
                     </div>
@@ -421,7 +489,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 <!-- 5K Card -->
-                <div class="route-card flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section">
+                <div class="route-card route-5k flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section">
                     <div>
                         <div class="h-52 overflow-hidden relative">
                             <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=600"
@@ -463,7 +531,7 @@
                 </div>
 
                 <!-- 10K Card (POPULAR) -->
-                <div class="route-card flex flex-col justify-between glass-card-accent rounded-3xl overflow-hidden border-2 border-nature-accent shadow-2xl relative transform md:-translate-y-4 fade-in-section"
+                <div class="route-card route-10k flex flex-col justify-between glass-card-accent rounded-3xl overflow-hidden border-2 border-nature-accent shadow-2xl relative transform md:-translate-y-4 fade-in-section"
                     style="transition-delay: 100ms;">
                     <div class="absolute top-0 right-0 bg-nature-accent text-nature-900 text-xs font-black px-4 py-1.5 rounded-bl-xl z-20 shadow-md">
                         ★ MÁS POPULAR
@@ -509,7 +577,7 @@
                 </div>
 
                 <!-- 21K Card (ELITE) -->
-                <div class="route-card flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section"
+                <div class="route-card route-21k flex flex-col justify-between glass-card rounded-3xl overflow-hidden border border-nature-500/30 fade-in-section"
                     style="transition-delay: 200ms;">
                     <div>
                         <div class="h-52 overflow-hidden relative">
@@ -2446,8 +2514,50 @@
             }
         }
 
+        // Reloj oficial de cuenta regresiva en vivo: 15 de Noviembre de 2026 (06:00 AM hora Bogotá)
+        function iniciarCuentaRegresiva() {
+            const fechaObjetivo = new Date('2026-11-15T06:00:00-05:00').getTime();
+
+            function actualizar() {
+                const ahora = new Date().getTime();
+                const diferencia = fechaObjetivo - ahora;
+
+                if (diferencia <= 0) {
+                    const d = document.getElementById('days');
+                    const h = document.getElementById('hours');
+                    const m = document.getElementById('minutes');
+                    const s = document.getElementById('seconds');
+                    if (d) d.innerText = '00';
+                    if (h) h.innerText = '00';
+                    if (m) m.innerText = '00';
+                    if (s) s.innerText = '00';
+                    return;
+                }
+
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+                const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+                const segundos = Math.floor((diferencia / 1000) % 60);
+
+                const d = document.getElementById('days');
+                const h = document.getElementById('hours');
+                const m = document.getElementById('minutes');
+                const s = document.getElementById('seconds');
+
+                if (d) d.innerText = String(dias).padStart(2, '0');
+                if (h) h.innerText = String(horas).padStart(2, '0');
+                if (m) m.innerText = String(minutos).padStart(2, '0');
+                if (s) s.innerText = String(segundos).padStart(2, '0');
+            }
+
+            actualizar();
+            setInterval(actualizar, 1000);
+        }
+
         // Detectar si el usuario viene de aceptar términos legales desde terminos.html o enlace directo
         window.addEventListener('DOMContentLoaded', () => {
+            iniciarCuentaRegresiva();
+
             const urlParams = new URLSearchParams(window.location.search);
             const debeInscribirse = urlParams.get('inscribirme') === '1' || urlParams.get('inscribirme') === 'true';
             const terminosAceptados = urlParams.get('terminosAceptados') === '1' || urlParams.get('terminosAceptados') === 'true';
@@ -2477,7 +2587,7 @@
         <a href="https://wa.me/573100000000?text=Hola%20organizadores%20de%20Nocaima%20Trail%202026%2C%20tengo%20una%20consulta%20sobre%20la%20carrera."
             target="_blank" rel="noopener noreferrer"
             aria-label="Contactar a la organización de Nocaima Trail por WhatsApp"
-            class="w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-[0_4px_25px_rgba(16,185,129,0.5)] transform hover:scale-110 active:scale-95 transition-all">
+            class="whatsapp-pulse w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl transform hover:scale-110 active:scale-95 transition-all">
             <i class="fab fa-whatsapp"></i>
         </a>
         <div class="hidden sm:block ml-3 px-3.5 py-1.5 rounded-full bg-nature-900/90 border border-nature-500/40 text-xs text-gray-200 font-medium shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">

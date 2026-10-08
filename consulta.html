@@ -41,6 +41,11 @@
         }
     </script>
     <style>
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #081c15; }
+        ::-webkit-scrollbar-thumb { background: #2d6a4f; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4a373; }
+
         @media (max-width: 640px) {
             input, select, textarea { font-size: 16px !important; }
         }
@@ -55,6 +60,30 @@
         }
         .animate-shake {
             animation: shakeError 0.38s ease-in-out;
+        }
+
+        /* Glossy Shimmer Animation */
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+            transform: translateX(-150%) rotate(25deg);
+            pointer-events: none;
+        }
+        .btn-shimmer:hover::after {
+            animation: shimmerSweep 1.1s cubic-bezier(0.16, 1, 0.3, 1);
         }
     </style>
 </head>
@@ -101,7 +130,7 @@
                             inputmode="numeric" pattern="[0-9]*" autocomplete="off"
                             class="flex-1 bg-nature-900 border border-nature-700 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:border-nature-accent transition-all">
                         <button type="submit" id="btn-buscar"
-                            class="w-full sm:w-auto bg-nature-accent hover:bg-white text-nature-900 font-black px-7 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 transform active:scale-95 shadow-lg min-h-[48px]">
+                            class="btn-shimmer w-full sm:w-auto bg-nature-accent hover:bg-white text-nature-900 font-black px-7 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 transform active:scale-95 shadow-lg min-h-[48px]">
                             <i class="fas fa-search"></i> <span>Consultar</span>
                         </button>
                     </div>
