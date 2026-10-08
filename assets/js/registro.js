@@ -277,7 +277,7 @@ function validarFechaNacVal(val, distancia) {
     const fecha = new Date(val);
     if (isNaN(fecha.getTime())) return 'La fecha de nacimiento no es válida.';
 
-    const fechaEvento = new Date('2026-11-15T00:00:00Z');
+    const fechaEvento = new Date('2027-01-31T00:00:00Z');
     let edad = fechaEvento.getFullYear() - fecha.getFullYear();
     const m = fechaEvento.getMonth() - fecha.getMonth();
     if (m < 0 || (m === 0 && fechaEvento.getDate() < fecha.getDate())) {
@@ -489,7 +489,7 @@ function inicializarValidacionEnVivo() {
 
                 // Auto-calcular edad
                 const f = new Date(val);
-                const fechaEvento = new Date('2026-11-15T00:00:00Z');
+                const fechaEvento = new Date('2027-01-31T00:00:00Z');
                 let edad = fechaEvento.getFullYear() - f.getFullYear();
                 const m = fechaEvento.getMonth() - f.getMonth();
                 if (m < 0 || (m === 0 && fechaEvento.getDate() < f.getDate())) edad--;

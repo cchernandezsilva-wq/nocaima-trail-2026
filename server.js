@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname)));
 app.get('/api/health', (req, res) => {
     res.json({
         ok: true,
-        evento: 'Maratón Nocaima Trail 2026',
+        evento: 'Media Maratón de la Panela 2027',
         ambiente: process.env.WOMPI_ENVIRONMENT || 'sandbox',
         timestamp: new Date().toISOString()
     });

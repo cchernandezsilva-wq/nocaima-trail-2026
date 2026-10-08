@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de Inscripción | Maratón Nocaima Trail 2026</title>
+    <title>Confirmación de Inscripción | Media Maratón de la Panela 2027</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23081c15'/><path d='M15 75 L45 25 L65 55 L75 40 L90 75 Z' fill='%23d4a373'/><path d='M35 75 L55 35 L75 75 Z' fill='%232d6a4f'/><circle cx='80' cy='25' r='8' fill='%23faedcd'/></svg>">
     
     <!-- Google Fonts -->
@@ -142,8 +142,8 @@
                             <span class="px-2.5 py-0.5 rounded-full bg-nature-accent text-nature-900 font-extrabold text-[10px] uppercase tracking-wider">PASAPORTE OFICIAL</span>
                             <span id="ticket-dist-badge" class="px-2.5 py-0.5 rounded-full bg-nature-900/80 text-white font-bold text-[10px]">10K TRAIL</span>
                         </div>
-                        <h2 class="font-heading font-black text-2xl text-white mt-1">Maratón Nocaima Trail 2026</h2>
-                        <p class="text-xs text-nature-earth">15 de Noviembre de 2026 • Parque Principal de Nocaima</p>
+                        <h2 class="font-heading font-black text-2xl text-white mt-1">Media Maratón de la Panela 2027</h2>
+                        <p class="text-xs text-nature-earth">31 de Enero de 2027 • Parque Principal de Nocaima</p>
                     </div>
 
                     <!-- Gran Número de Dorsal -->
@@ -280,7 +280,7 @@
 
     <!-- Footer Simple -->
     <footer class="py-6 text-center text-xs text-gray-500 border-t border-nature-800 no-print">
-        Maratón Nocaima Trail 2026 • Plataforma Oficial de Pagos Seguros con Wompi Bancolombia
+        Media Maratón de la Panela 2027 • Plataforma Oficial de Pagos Seguros con Wompi Bancolombia
     </footer>
 
     <!-- Script de lógica de confirmación -->
@@ -389,7 +389,7 @@
         function compartirWhatsApp() {
             const dorsal = document.getElementById('ticket-dorsal')?.innerText || '';
             const dist = document.getElementById('ticket-dist')?.innerText || '';
-            const text = encodeURIComponent(`¡Ya estoy oficialmente confirmado para la Maratón Nocaima Trail 2026! ⛰️🏃\nMi Dorsal oficial es ${dorsal} en la distancia ${dist}.\n¡Nos vemos en los senderos este 15 de Noviembre! 🏃💨`);
+            const text = encodeURIComponent(`¡Ya estoy oficialmente confirmado para la Media Maratón de la Panela 2027! ⛰️🏃\nMi Dorsal oficial es ${dorsal} en la distancia ${dist}.\n¡Nos vemos en los senderos este 31 de Enero de 2027! 🏃💨`);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
 
