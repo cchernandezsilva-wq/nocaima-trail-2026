@@ -21,14 +21,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware de normalización de rutas para Netlify Functions:
-// Permite que la API responda correctamente sin importar si Netlify entrega
-// la ruta como '/api/*', '/.netlify/functions/api/*', o con prefijo de función.
+// Permite que la API responda correctamente sin importar cómo Netlify pase la ruta
 app.use((req, res, next) => {
-    if (req.url.startsWith('/.netlify/functions/api')) {
-        req.url = req.url.replace('/.netlify/functions/api', '');
-        if (!req.url.startsWith('/api')) {
-            req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
-        }
+    if (req.url.startsWith('/.netlify/functions/server')) {
+        req.url = req.url.replace('/.netlify/functions/server', '');
+    }
+    if (!req.url.startsWith('/api')) {
+        req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
     }
     next();
 });
